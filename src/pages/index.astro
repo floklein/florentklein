@@ -8,29 +8,41 @@ const projects = [
     name: "great minds",
     description: "Real-time party game to play with your friends.",
     url: "https://greatminds.gg/",
+    tags: [
+      "Vite",
+      "WebSocket",
+      "Ant Design",
+      "Colyseus",
+      "Motion",
+      "TanStack Query",
+    ],
   },
   {
     name: "Artguessr",
     description: "Educative game about finding the date of an artwork.",
     github: "https://github.com/floklein/artguessr",
     url: "https://artguessr.florentklein.dev/",
+    tags: ["Next.js", "Tailwind", "Shadcn", "Zod"],
   },
   {
     name: "kAI",
     description: "AI client for Chrome-integrated Gemini Nano.",
     github: "https://github.com/floklein/kai",
+    tags: ["Vite", "Tailwind", "Shadcn", "Dexie", "TanStack Router"],
   },
   {
     name: "HALP!",
     description: "Social app around polls for iOS, Android and web.",
     github: "https://github.com/floklein/halp",
     url: "https://halp.florentklein.dev/",
+    tags: ["React Native", "Expo", "PostgreSQL", "Drizzle", "BetterAuth"],
   },
   {
     name: "florentklein.dev",
     description: "This very website.",
     github: "https://github.com/floklein/florentklein",
     url: "https://florentklein.dev/",
+    tags: ["Astro", "Tailwind"],
   },
 ];
 ---
@@ -136,6 +148,14 @@ const projects = [
             <div class="space-y-4">
               <h3 class="text-xl sm:text-2xl font-medium">{project.name}</h3>
               <p class="text-lg text-gray-600">{project.description}</p>
+              <p class="flex flex-wrap gap-2">
+                {project.tags &&
+                  project.tags.map((tag) => (
+                    <span class="px-3 py-1 text-sm bg-[rgba(0,0,0,0.05)] rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+              </p>
               <div class="flex gap-4">
                 {project.github && (
                   <a
