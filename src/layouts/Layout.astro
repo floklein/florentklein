@@ -18,8 +18,25 @@ import "../styles/global.css";
     />
   </head>
   <body
-    class="text-gray-900 min-h-screen selection:bg-[var(--primary)] selection:text-[var(--background)]"
+    class="min-h-screen selection:bg-[var(--primary)] selection:text-[var(--background)]"
   >
+    <script is:inline>
+      const theme = (() => {
+        const localStorageTheme = localStorage?.getItem("theme") ?? "";
+        if (["dark", "light"].includes(localStorageTheme)) {
+          return localStorageTheme;
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
     <slot />
   </body>
 </html>
