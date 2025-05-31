@@ -21,9 +21,9 @@ export const projects = [
   },
   {
     name: "kAI",
-    description: "AI client for Chrome-integrated Gemini Nano.",
+    description: "Multimodal AI client for Chrome-integrated Gemini Nano.",
     github: "https://github.com/floklein/kai",
-    tags: ["Vite", "Tailwind", "Shadcn", "Dexie", "TanStack Router"],
+    tags: ["Vite", "Dexie", "TanStack Router", "Tailwind", "Shadcn"],
   },
   {
     name: "HALP!",
@@ -34,9 +34,14 @@ export const projects = [
   },
   {
     name: "florentklein.dev",
-    description: "This very website.",
+    description: "This very portfolio, with its AI assistant.",
     github: "https://github.com/floklein/florentklein",
     url: "https://florentklein.dev/",
-    tags: ["Astro", "Tailwind"],
+    tags: ["Astro", "OpenRouter", "DeepSeek", "Tailwind", "Shadcn"],
+  },
+  {
+    name: "Mailectron",
+    description: "Simple email desktop app, for macOS and Windows.",
+    tags: ["Electron", "tRPC", "Supabase", "Turborepo", "Tailwind", "Shadcn"],
   },
 ];

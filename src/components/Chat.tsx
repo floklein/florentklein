@@ -48,12 +48,12 @@ function ChatWithProviders() {
 
   async function handleSubmit(e?: React.FormEvent<HTMLFormElement>) {
     e?.preventDefault();
+    setOpen(true);
     const content = text.trim();
     if (content.length === 0) {
       return;
     }
     setText("");
-    setOpen(true);
     setMessages((oldMessages) => [...oldMessages, { role: "user", content }]);
     await sendMessage({
       messages: [...messages, { role: "user", content }],
@@ -82,7 +82,7 @@ function ChatWithProviders() {
           placeholder="Ask about me..."
           value={text}
           onChange={handleInputChange}
-          className="border-none bg-accent text-xl! px-4 h-12 focus-visible:scale-105 focus-visible:shadow-lg transition-all"
+          className="border-none bg-accent text-xl! px-4 h-12 focus-visible:scale-105 focus-visible:shadow-lg transition-all rounded-none"
           autoFocus
         />
       </form>
@@ -98,9 +98,9 @@ function ChatWithProviders() {
             <div
               key={index}
               className={cn(
-                "break-words",
+                "break-words max-w-full",
                 message.role === "user" &&
-                  "px-3 py-2 bg-accent rounded-md justify-self-end block w-fit",
+                  "px-3 py-2 bg-accent justify-self-end block w-fit max-w-[80%]",
               )}
             >
               <Markdown>{message.content}</Markdown>
@@ -119,7 +119,7 @@ function ChatWithProviders() {
             onChange={handleTextareaChange}
             onKeyDown={handleKeyDown}
             autoFocus
-            className="border-none bg-accent"
+            className="border-none bg-accent resize-none rounded-none"
           />
         </div>
       </SheetContent>
