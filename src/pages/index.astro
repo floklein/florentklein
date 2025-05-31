@@ -1,4 +1,5 @@
 ---
+import { Chat } from "@/components/Chat";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import profileImage from "../assets/profile.png";
@@ -89,6 +90,9 @@ const projects = [
           I'm Florent, the current frontend lead at Dametis, building a
           greentech SaaS to help companies reduce their carbon footprint.
         </p>
+        <div>
+          <Chat client:load />
+        </div>
         <div class="flex gap-4 items-center">
           <a
             href="https://www.linkedin.com/in/florentklein/"
