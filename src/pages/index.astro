@@ -54,21 +54,24 @@ const projects = [
       <nav class="flex gap-2 sm:gap-4 lg:gap-6">
         <a
           href="mailto:florentklein42@gmail.com"
-          class="text-lg sm:text-xl text-gray-600 hover:text-gray-900">Email</a
+          class="text-lg sm:text-xl text-muted-foreground hover:text-foreground"
+          >Email</a
         >
-        <span class="text-gray-300">•</span>
+        <span class="text-muted-foreground">•</span>
         <a
           href="https://www.linkedin.com/in/florentklein/"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-lg sm:text-xl text-gray-600 hover:text-gray-900">CV</a
+          class="text-lg sm:text-xl text-muted-foreground hover:text-foreground"
+          >CV</a
         >
-        <span class="text-gray-300">•</span>
+        <span class="text-muted-foreground">•</span>
         <a
           href="https://www.dametis.com/"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-lg sm:text-xl text-gray-600 hover:text-gray-900">Work</a
+          class="text-lg sm:text-xl text-muted-foreground hover:text-foreground"
+          >Work</a
         >
       </nav>
     </header>
@@ -76,7 +79,7 @@ const projects = [
       class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-end mb-12 sm:mb-14 lg:mb-16"
     >
       <div class="space-y-8 sm:space-y-10 lg:space-y-12">
-        <hr class="w-full border-t border-black" />
+        <hr class="w-full border-t border-foreground" />
         <h1
           class="text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight font-serif"
         >
@@ -132,17 +135,14 @@ const projects = [
         />
       </div>
     </main>
-
-    <hr class="w-full border-t border-black mb-12 sm:mb-14 lg:mb-16" />
-
-    <!-- Projects Section -->
+    <hr class="w-full border-t border-foreground mb-12 sm:mb-14 lg:mb-16" />
     <section class="mb-12 sm:mb-14 lg:mb-16">
       <h2
         class="text-2xl sm:text-3xl lg:text-4xl font-medium mb-4 sm:mb-6 font-serif"
       >
         Projects
       </h2>
-      <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-3xl">
+      <p class="text-lg sm:text-xl text-muted-foreground mb-8">
         A selection of personal projects I've built using React and TypeScript,
         and deployed using Coolify.
       </p>
@@ -153,13 +153,13 @@ const projects = [
               <h3 class="text-xl sm:text-2xl font-medium mb-2 sm:mb-3 lg:mb-4">
                 {project.name}
               </h3>
-              <p class="text-lg text-gray-600 mb-2 sm:mb-3 lg:mb-4">
+              <p class="text-lg text-muted-foreground mb-2 sm:mb-3 lg:mb-4">
                 {project.description}
               </p>
               <p class="flex flex-wrap gap-2 mb-2 sm:mb-3 lg:mb-4">
                 {project.tags &&
                   project.tags.map((tag) => (
-                    <span class="px-3 py-1 text-sm bg-[rgba(0,0,0,0.05)] rounded-full">
+                    <span class="px-3 py-1 text-sm bg-muted-foreground/10 rounded-full">
                       {tag}
                     </span>
                   ))}
@@ -170,7 +170,7 @@ const projects = [
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900"
+                    class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
                   >
                     <svg
                       class="w-5 h-5"
@@ -192,7 +192,7 @@ const projects = [
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900"
+                    class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
                   >
                     <svg
                       class="w-5 h-5"
@@ -217,5 +217,6 @@ const projects = [
         }
       </div>
     </section>
+    <hr class="w-full border-t border-foreground mb-12 sm:mb-14 lg:mb-16" />
   </div>
 </Layout>
