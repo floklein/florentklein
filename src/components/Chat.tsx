@@ -5,9 +5,17 @@ import {
   useMutation,
 } from "@tanstack/react-query";
 import { actions } from "astro:actions";
+import { Ellipsis } from "lucide-react";
 import { useState } from "react";
+import Markdown from "react-markdown";
 import { Input } from "./ui/input";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "./ui/sheet";
 import { Textarea } from "./ui/textarea";
 
 type Message = {
@@ -18,12 +26,24 @@ type Message = {
 const queryClient = new QueryClient();
 
 function ChatWithProviders() {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: "assistant",
+      content:
+        "Hey! I'm a friendly assistant here to answer questions about Florent.",
+    },
+  ]);
   const [text, setText] = useState("");
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const { mutateAsync: sendMessage, isPending } = useMutation({
-    mutationFn: actions.sendMessage,
+    mutationFn: actions.sendMessage.orThrow,
+    onSuccess: (content) => {
+      setMessages((oldMessages) => [
+        ...oldMessages,
+        { role: "assistant", content },
+      ]);
+    },
   });
 
   async function handleSubmit(e?: React.FormEvent<HTMLFormElement>) {
@@ -32,20 +52,12 @@ function ChatWithProviders() {
     if (content.length === 0) {
       return;
     }
-    setMessages((oldMessages) => [...oldMessages, { role: "user", content }]);
+    setText("");
     setOpen(true);
-    const { data, error } = await sendMessage({
+    setMessages((oldMessages) => [...oldMessages, { role: "user", content }]);
+    await sendMessage({
       messages: [...messages, { role: "user", content }],
     });
-    if (error) {
-      console.error(error);
-      return;
-    }
-    setMessages((oldMessages) => [
-      ...oldMessages,
-      { role: "assistant", content: data },
-    ]);
-    setText("");
   }
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -70,25 +82,35 @@ function ChatWithProviders() {
           placeholder="Ask about me..."
           value={text}
           onChange={handleInputChange}
-          disabled={isPending}
+          className="border-none bg-accent text-xl! px-4 h-12 focus-visible:scale-110 focus-visible:shadow-lg transition-all"
+          autoFocus
         />
       </form>
       <SheetContent className="gap-0">
         <SheetHeader>
-          <SheetTitle>My AI assistant</SheetTitle>
+          <SheetTitle>Chat</SheetTitle>
+          <SheetDescription hidden>
+            Ask my AI assistant anything about me.
+          </SheetDescription>
         </SheetHeader>
         <div className="space-y-4 flex-1 overflow-y-auto p-4">
           {messages.map((message, index) => (
             <div
               key={index}
               className={cn(
+                "break-words",
                 message.role === "user" &&
                   "px-3 py-2 bg-accent rounded-md justify-self-end block w-fit",
               )}
             >
-              {message.content}
+              <Markdown>{message.content}</Markdown>
             </div>
           ))}
+          {isPending && (
+            <div>
+              <Ellipsis className="animate-pulse" />
+            </div>
+          )}
         </div>
         <div className="p-4">
           <Textarea
@@ -96,7 +118,8 @@ function ChatWithProviders() {
             value={text}
             onChange={handleTextareaChange}
             onKeyDown={handleKeyDown}
-            disabled={isPending}
+            autoFocus
+            className="border-none bg-accent"
           />
         </div>
       </SheetContent>
