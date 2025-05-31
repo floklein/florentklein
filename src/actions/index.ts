@@ -1,3 +1,4 @@
+import { projects } from "@/assets";
 import { defineAction } from "astro:actions";
 import { z } from "astro:schema";
 import OpenAI from "openai";
@@ -9,63 +10,72 @@ const openai = new OpenAI({
 
 const context = `
 I'm Florent Klein. I was born in 1996 in Nice, France.
-
-I'm the current frontend lead at Dametis, building a
-greentech SaaS to help companies reduce their carbon footprint.
-
+I live in Paris, France.
+I'm the current frontend lead at Dametis, building a greentech SaaS to help companies reduce their carbon footprint.
 I'm a React developer.
 
 # Experience
 
-## Dametis
+## Dametis (since 2019)
 
-A greentech SaaS to help companies reduce their carbon footprint.
+- Frontend lead (since 2023)
+- Frontend developer (2020-2023)
+- Intern (2019-2020)
 
 ### Job description
-- Lead the frontend team
 - Build the frontend of the SaaS
+- Recruit and manage the frontend team
+- UI/UX design
+- QA
 
 ### Tech stack
 - React
 - TypeScript
 - MUI
-- Vite
+- Webpack
 - Node.js
 - Express
 - Git
 - Gitlab
+- Highcharts
+- JointJS
+- Redux
+- RTK Query
+
+## Anacours (2016-2017)
+
+- Private tutoring for high school students (Maths, Science)
+
+# Education
+
+- Ecole 42, Paris (2016-2020): Computer science, development
+- MPSI, CPGE Lycée Masséna, Nice (2013-2016): Maths, Physics
+- Baccalauréat S spécialité Maths, Lycée Stanislas, Nice (2013): Mention Très Bien
 
 # Projects
 
 A selection of personal projects I've built using React and TypeScript, and deployed using Coolify.
 
-## great minds
-Real-time party game to play with friends.
-- URL: https://greatminds.gg/
-- Tech stack: Vite, WebSocket, Ant Design, Colyseus, Motion, TanStack Query
+${projects.map(
+  (project) => `
+  ## ${project.name}
+  ${project.description}
+  - Tech stack: ${project.tags.join(", ")}
+  ${project.url ? `- URL: ${project.url}` : ""}
+  ${project.github ? `- GitHub: ${project.github}` : ""}
+  `,
+)}
 
-## Artguessr
-Educative game about finding the date of an artwork.
-- GitHub: https://github.com/floklein/artguessr
-- URL: https://artguessr.florentklein.dev/
-- Tech stack: Next.js, Tailwind, Shadcn, Zod
+# Languages
 
-## kAI
-AI client for Chrome-integrated Gemini Nano.
-- GitHub: https://github.com/floklein/kai
-- Tech stack: Vite, Tailwind, Shadcn, Dexie, TanStack Router
+- French: Native
+- English: Fluent
+- Spanish: Beginner
+- Italian: Beginner
 
-## HALP!
-Social app around polls for iOS, Android and web.
-- GitHub: https://github.com/floklein/halp
-- URL: https://halp.florentklein.dev/
-- Tech stack: React Native, Expo, PostgreSQL, Drizzle, BetterAuth
+# Volunteering
 
-## florentklein.dev
-This very website.
-- GitHub: https://github.com/floklein/florentklein
-- URL: https://florentklein.dev/
-- Tech stack: Astro, Tailwind
+- Banque Alimentaire des Alpes Maritimes
 `;
 
 const systemMessage = `

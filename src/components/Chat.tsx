@@ -82,11 +82,11 @@ function ChatWithProviders() {
           placeholder="Ask about me..."
           value={text}
           onChange={handleInputChange}
-          className="border-none bg-accent text-xl! px-4 h-12 focus-visible:scale-110 focus-visible:shadow-lg transition-all"
+          className="border-none bg-accent text-xl! px-4 h-12 focus-visible:scale-105 focus-visible:shadow-lg transition-all"
           autoFocus
         />
       </form>
-      <SheetContent className="gap-0">
+      <SheetContent className="gap-0 max-w-xl!">
         <SheetHeader>
           <SheetTitle>Chat</SheetTitle>
           <SheetDescription hidden>
