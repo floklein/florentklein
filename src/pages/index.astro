@@ -39,9 +39,7 @@ import { Image } from "astro:assets";
     >
       <div class="space-y-8 sm:space-y-10 lg:space-y-12">
         <hr class="w-full border-t border-foreground" />
-        <h1
-          class="text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight font-serif"
-        >
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl leading-tight">
           Frontend lead, React expert and passionate developer.
         </h1>
         <p class="text-lg sm:text-xl lg:text-2xl">
@@ -99,29 +97,25 @@ import { Image } from "astro:assets";
     </main>
     <hr class="w-full border-t border-foreground mb-12 sm:mb-14 lg:mb-16" />
     <section class="mb-12 sm:mb-14 lg:mb-16">
-      <h2
-        class="text-2xl sm:text-3xl lg:text-4xl font-medium mb-4 sm:mb-6 font-serif"
-      >
-        Projects
-      </h2>
-      <p class="text-lg sm:text-xl text-muted-foreground mb-8">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl mb-4 sm:mb-6">Projects</h2>
+      <p class="text-lg sm:text-xl text-muted-foreground mb-8 sm:mb-10">
         A selection of personal projects I've built using React and TypeScript,
         and deployed using Coolify.
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
         {
           projects.map((project) => (
-            <div class="space-y-4">
-              <h3 class="text-xl sm:text-2xl font-medium mb-2 sm:mb-3 lg:mb-4">
-                {project.name}
-              </h3>
-              <p class="text-lg text-muted-foreground mb-2 sm:mb-3 lg:mb-4">
-                {project.description}
-              </p>
-              <p class="flex flex-wrap gap-2 mb-2 sm:mb-3 lg:mb-4">
+            <div class="space-y-2 sm:space-y-4">
+              <div class="space-y-1 sm:space-y-2">
+                <h3 class="text-xl sm:text-2xl font-medium">{project.name}</h3>
+                <p class="sm:text-lg text-muted-foreground">
+                  {project.description}
+                </p>
+              </div>
+              <p class="flex flex-wrap gap-2">
                 {project.tags &&
                   project.tags.map((tag) => (
-                    <span class="px-3 py-1 text-sm bg-muted-foreground/10 rounded-full">
+                    <span class="px-3 py-1 text-sm bg-muted rounded-full">
                       {tag}
                     </span>
                   ))}

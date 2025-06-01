@@ -82,7 +82,7 @@ function ChatWithProviders() {
           placeholder="Ask about me..."
           value={text}
           onChange={handleInputChange}
-          className="border-none bg-accent text-xl! px-4 h-12 focus-visible:scale-105 focus-visible:shadow-lg transition-all rounded-none"
+          className="text-xl! px-4 h-12 focus-visible:scale-105 focus-visible:shadow-lg transition-all font-mono bg-card"
           autoFocus
         />
       </form>
@@ -119,7 +119,7 @@ function ChatWithProviders() {
             onChange={handleTextareaChange}
             onKeyDown={handleKeyDown}
             autoFocus
-            className="border-none bg-accent resize-none rounded-none"
+            className="bg-card resize-none font-mono"
           />
         </div>
       </SheetContent>

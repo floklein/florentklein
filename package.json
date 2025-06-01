@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.2.2",
+    "@fontsource/ibm-plex-mono": "^5.2.5",
+    "@fontsource/libre-baskerville": "^5.2.6",
     "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-label": "^2.1.7",
