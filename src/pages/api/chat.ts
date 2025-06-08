@@ -1,7 +1,9 @@
 import { projects } from "@/assets";
-import { defineAction } from "astro:actions";
+import type { APIContext } from "astro";
 import { z } from "astro:schema";
 import OpenAI from "openai";
+
+export const prerender = false;
 
 const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
@@ -94,29 +96,51 @@ ${context}
 </context>
 `;
 
-export const server = {
-  sendMessage: defineAction({
-    input: z.object({
-      messages: z.array(
-        z.object({
-          role: z.enum(["user", "assistant"]),
-          content: z.string(),
-        }),
-      ),
+const requestSchema = z.object({
+  messages: z.array(
+    z.object({
+      role: z.enum(["user", "assistant"]),
+      content: z.string(),
     }),
-    handler: async ({ messages }) => {
-      const response = await openai.chat.completions.create({
-        model: "deepseek/deepseek-chat-v3-0324:free",
-        messages: [
-          {
-            role: "system",
-            content: systemMessage,
-            name: "Florent Klein",
-          },
-          ...messages,
-        ],
-      });
-      return response.choices[0].message.content ?? "";
+  ),
+});
+
+export async function POST(context: APIContext) {
+  const json = await context.request.json();
+  const { messages } = await requestSchema.parse(json);
+  const stream = await openai.chat.completions.create({
+    model: "deepseek/deepseek-chat-v3-0324:free",
+    messages: [
+      {
+        role: "system",
+        content: systemMessage,
+        name: "Florent Klein",
+      },
+      ...messages,
+    ],
+    stream: true,
+  });
+  const readableStream = new ReadableStream({
+    async start(controller) {
+      try {
+        for await (const chunk of stream) {
+          const content = chunk.choices[0]?.delta?.content;
+          if (!content) continue;
+          const data = `data: ${JSON.stringify({ content })}\n\n`;
+          controller.enqueue(new TextEncoder().encode(data));
+        }
+        controller.enqueue(new TextEncoder().encode("data: [DONE]\n\n"));
+        controller.close();
+      } catch (error) {
+        controller.error(error);
+      }
     },
-  }),
-};
+  });
+  return new Response(readableStream, {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "no-cache",
+      Connection: "keep-alive",
+    },
+  });
+}
