@@ -14,6 +14,8 @@ import {
   useMutation,
 } from "@tanstack/react-query";
 import { Ellipsis } from "lucide-react";
+import type OpenAI from "openai";
+import { Stream } from "openai/core/streaming.mjs";
 import {
   useState,
   type ChangeEvent,
@@ -55,35 +57,22 @@ function ChatWithProviders() {
       if (!response.body) {
         throw new Error("No response body");
       }
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let assistantMessage = "";
-      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
-      try {
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          const chunk = decoder.decode(value);
-          const lines = chunk.split("\n");
-          for (const line of lines) {
-            if (!line.startsWith("data: ")) continue;
-            const data = line.slice(6);
-            if (data === "[DONE]") break;
-            try {
-              const parsed = JSON.parse(data);
-              if (!parsed.content) continue;
-              assistantMessage += parsed.content;
-              setMessages((prev) => [
-                ...prev.slice(0, -1),
-                { role: "assistant", content: assistantMessage },
-              ]);
-            } catch (e) {
-              console.error(e);
-            }
-          }
-        }
-      } finally {
-        reader.releaseLock();
+      setMessages((oldMessages) => [
+        ...oldMessages,
+        { role: "assistant", content: "" },
+      ]);
+      const stream =
+        Stream.fromReadableStream<OpenAI.Chat.Completions.ChatCompletionChunk>(
+          response.body,
+          new AbortController(),
+        );
+      for await (const chunk of stream) {
+        const content = chunk.choices[0]?.delta?.content;
+        if (!content) continue;
+        setMessages((oldMessages) => [
+          ...oldMessages.slice(0, -1),
+          { role: "assistant", content: oldMessages.at(-1)?.content + content },
+        ]);
       }
     },
   });

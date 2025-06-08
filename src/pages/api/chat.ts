@@ -120,23 +120,7 @@ export async function POST(context: APIContext) {
     ],
     stream: true,
   });
-  const readableStream = new ReadableStream({
-    async start(controller) {
-      try {
-        for await (const chunk of stream) {
-          const content = chunk.choices[0]?.delta?.content;
-          if (!content) continue;
-          const data = `data: ${JSON.stringify({ content })}\n\n`;
-          controller.enqueue(new TextEncoder().encode(data));
-        }
-        controller.enqueue(new TextEncoder().encode("data: [DONE]\n\n"));
-        controller.close();
-      } catch (error) {
-        controller.error(error);
-      }
-    },
-  });
-  return new Response(readableStream, {
+  return new Response(stream.toReadableStream(), {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
       "Cache-Control": "no-cache",
