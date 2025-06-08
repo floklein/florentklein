@@ -1,22 +1,26 @@
-import { cn } from "@/lib/utils";
-import {
-  QueryClient,
-  QueryClientProvider,
-  useMutation,
-} from "@tanstack/react-query";
-import { actions } from "astro:actions";
-import { Ellipsis } from "lucide-react";
-import { useState } from "react";
-import Markdown from "react-markdown";
-import { Input } from "./ui/input";
+import { Input } from "@/components/ui/input";
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "./ui/sheet";
-import { Textarea } from "./ui/textarea";
+} from "@/components/ui/sheet";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useMutation,
+} from "@tanstack/react-query";
+import { Ellipsis } from "lucide-react";
+import {
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+  type KeyboardEvent,
+} from "react";
+import Markdown from "react-markdown";
 
 type Message = {
   role: "user" | "assistant";
@@ -30,23 +34,61 @@ function ChatWithProviders() {
     {
       role: "assistant",
       content:
-        "Hey! I'm a friendly assistant here to answer questions about Florent.",
+        "Hey! I'm Florent's assistant here to answer questions about him.",
     },
   ]);
   const [text, setText] = useState("");
   const [open, setOpen] = useState(false);
 
-  const { mutateAsync: sendMessage, isPending } = useMutation({
-    mutationFn: actions.sendMessage.orThrow,
-    onSuccess: (content) => {
-      setMessages((oldMessages) => [
-        ...oldMessages,
-        { role: "assistant", content },
-      ]);
+  const { mutate: sendMessage, isPending: isStreaming } = useMutation({
+    mutationFn: async (messages: Message[]) => {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        body: JSON.stringify({ messages }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      if (!response.body) {
+        throw new Error("No response body");
+      }
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let assistantMessage = "";
+      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value);
+          const lines = chunk.split("\n");
+          for (const line of lines) {
+            if (!line.startsWith("data: ")) continue;
+            const data = line.slice(6);
+            if (data === "[DONE]") break;
+            try {
+              const parsed = JSON.parse(data);
+              if (!parsed.content) continue;
+              assistantMessage += parsed.content;
+              setMessages((prev) => [
+                ...prev.slice(0, -1),
+                { role: "assistant", content: assistantMessage },
+              ]);
+            } catch (e) {
+              console.error(e);
+            }
+          }
+        }
+      } finally {
+        reader.releaseLock();
+      }
     },
   });
 
-  async function handleSubmit(e?: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e?: FormEvent<HTMLFormElement>) {
     e?.preventDefault();
     setOpen(true);
     const content = text.trim();
@@ -54,21 +96,20 @@ function ChatWithProviders() {
       return;
     }
     setText("");
-    setMessages((oldMessages) => [...oldMessages, { role: "user", content }]);
-    await sendMessage({
-      messages: [...messages, { role: "user", content }],
-    });
+    const newMessages: Message[] = [...messages, { role: "user", content }];
+    setMessages(newMessages);
+    sendMessage(newMessages);
   }
 
-  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     setText(e.target.value);
   }
 
-  function handleTextareaChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+  function handleTextareaChange(e: ChangeEvent<HTMLTextAreaElement>) {
     setText(e.target.value);
   }
 
-  function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+  function handleKeyDown(e: KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSubmit();
@@ -106,7 +147,7 @@ function ChatWithProviders() {
               <Markdown>{message.content}</Markdown>
             </div>
           ))}
-          {isPending && (
+          {isStreaming && !messages.at(-1)?.content && (
             <div>
               <Ellipsis className="animate-pulse" />
             </div>
