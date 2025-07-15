@@ -1,5 +1,26 @@
 export const projects = [
   {
+    name: "Ambiance",
+    description:
+      "AI app that listens to your DnD story to play the right music.",
+    url: "https://ambiance.florentklein.dev/",
+    github: "https://github.com/floklein/ambiance",
+    tags: [
+      "Gemini",
+      "Vite",
+      "TanStack Router",
+      "Tailwind",
+      "Shadcn",
+      "TanStack Query",
+      "Bun",
+      "Hono",
+      "tRPC",
+      "BetterAuth",
+      "PostgreSQL",
+      "Drizzle",
+    ],
+  },
+  {
     name: "great minds",
     description: "Real-time party game to play with friends.",
     url: "https://greatminds.gg/",
