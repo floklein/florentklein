@@ -44,6 +44,7 @@ export const projects = [
     name: "kAI",
     description: "Multimodal AI client for Chrome-integrated Gemini Nano.",
     github: "https://github.com/floklein/kai",
+    url: "https://kai.florentklein.dev/",
     tags: ["Vite", "Dexie", "TanStack Router", "Tailwind", "Shadcn"],
   },
   {
