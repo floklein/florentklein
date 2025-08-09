@@ -1,10 +1,11 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { Message } from "./message";
 
 export function Chat() {
   const { messages, sendMessage, status } = useChat();
@@ -12,10 +13,10 @@ export function Chat() {
   const [input, setInput] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
-  async function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
       if (status !== "ready") return;
-      await sendMessage({
+      sendMessage({
         text: input,
       });
       setInput("");
@@ -55,25 +56,7 @@ export function Chat() {
             <div className="pointer-events-auto flex flex-col gap-2">
               <AnimatePresence>
                 {messages.slice(-1).map((message) => (
-                  <motion.div
-                    className={cn(
-                      "max-h-[50svh] max-w-[80%] overflow-y-auto whitespace-pre-wrap rounded-lg border-1 bg-secondary px-4 py-3",
-                      message.role === "user" &&
-                        "self-end bg-primary text-primary-foreground",
-                    )}
-                    key={message.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {message.parts.map((part) => {
-                      if (part.type === "text") {
-                        return <p key={part.type}>{part.text}</p>;
-                      }
-                      return null;
-                    })}
-                  </motion.div>
+                  <Message key={message.id} message={message} />
                 ))}
               </AnimatePresence>
             </div>
