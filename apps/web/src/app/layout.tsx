@@ -21,8 +21,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "florentklein-next",
-  description: "florentklein-next",
+  title: "Florent Klein",
+  description: "Lead Frondend, expert React et développeur passionné",
+  openGraph: {
+    title: "Florent Klein",
+    description: "Lead Frondend, expert React et développeur passionné",
+  },
 };
 
 export default function RootLayout({

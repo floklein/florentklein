@@ -101,6 +101,7 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                         href={project.github}
+                        aria-label="Lien vers GitHub"
                       >
                         <GitHub />
                       </Link>
@@ -112,6 +113,7 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                         href={project.url}
+                        aria-label="Lien vers le projet"
                       >
                         <ExternalLink />
                       </Link>
