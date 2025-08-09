@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-8 py-16">
+    <div className="container mx-auto px-4 pt-8 pb-12 sm:px-8 sm:pt-16 sm:pb-24">
       <div className="space-y-6 py-16">
         <div className="max-w-lg space-y-3">
           <h1 className="font-medium text-4xl">{texts.title}</h1>

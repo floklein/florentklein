@@ -41,7 +41,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
-          <div className="container sticky top-0 z-10 mx-auto flex items-center justify-between bg-background px-8 py-4">
+          <div className="container sticky top-0 z-10 mx-auto flex items-center justify-between bg-background px-4 py-4 sm:px-8">
             <Link href="/">Florent Klein</Link>
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="icon" asChild>

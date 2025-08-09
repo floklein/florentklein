@@ -24,7 +24,7 @@ export function Chat() {
 
   return (
     <div className="pointer-events-none fixed right-0 bottom-0 left-0 flex items-center justify-center">
-      <div className="relative w-full max-w-2xl p-8">
+      <div className="relative w-full max-w-2xl p-4 sm:p-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
