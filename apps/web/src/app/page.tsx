@@ -20,8 +20,8 @@ import { cn } from "@/lib/utils";
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 pt-8 pb-12 sm:px-8 sm:pt-16 sm:pb-24">
-      <div className="space-y-6 py-16">
+    <div className="container mx-auto px-4 pt-8 pb-20 sm:px-8 sm:pt-16 sm:pb-24">
+      <div className="space-y-6 py-8 sm:py-16">
         <div className="max-w-lg space-y-3">
           <h1 className="font-medium text-4xl">{texts.title}</h1>
           <p className="text-lg text-muted-foreground">{texts.description}</p>
@@ -46,7 +46,7 @@ export default function Home() {
           </Button>
         </div>
       </div>
-      <div className="space-y-8 py-16">
+      <div className="space-y-8 py-8 sm:py-16">
         <h2 className="font-medium text-2xl">Expérience</h2>
         <div>
           {experiences.map((experience, index) => (
@@ -86,7 +86,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="space-y-8 py-16">
+      <div className="space-y-8 py-8 sm:py-16">
         <h2 className="font-medium text-2xl">Projets</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {projects.map((project) => (
