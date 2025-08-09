@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
+import { texts } from "@/lib/texts";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Florent Klein",
     short_name: "Florent Klein",
-    description: "Lead Frondend, expert React et développeur passionné",
+    description: texts.title,
     start_url: "/",
     display: "standalone",
     icons: [

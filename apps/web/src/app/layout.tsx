@@ -9,6 +9,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import Providers from "@/components/providers";
 import { Button } from "@/components/ui/button";
 import { links } from "@/lib/links";
+import { texts } from "@/lib/texts";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,10 +23,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Florent Klein",
-  description: "Lead Frondend, expert React et développeur passionné",
+  description: texts.title,
   openGraph: {
     title: "Florent Klein",
-    description: "Lead Frondend, expert React et développeur passionné",
+    description: texts.title,
   },
 };
 
