@@ -53,6 +53,7 @@ export const projects = [
     name: "K3 Chat",
     description: "Chat IA multi-modal avec choix du modèle.",
     github: "https://github.com/floklein/k3chat",
+    url: "https://cloneathon.t3.chat/",
     tags: [
       "Next.js",
       "Convex",
@@ -62,6 +63,13 @@ export const projects = [
       "Tailwind",
       "Shadcn",
     ],
+  },
+  {
+    name: "florentklein.dev",
+    description: "Ce portfolio, avec son assistant IA.",
+    github: "https://github.com/floklein/florentklein",
+    url: "https://florentklein.dev/",
+    tags: ["Next.js", "AI SDK", "GPT-5", "Tailwind", "Shadcn"],
   },
   {
     name: "HALP!",
@@ -75,13 +83,6 @@ export const projects = [
       "BetterAuth",
       "Tamagui",
     ],
-  },
-  {
-    name: "florentklein.dev",
-    description: "Ce portfolio, avec son assistant IA.",
-    github: "https://github.com/floklein/florentklein",
-    url: "https://florentklein.dev/",
-    tags: ["Next.js", "AI SDK", "GPT-5", "Tailwind", "Shadcn"],
   },
   {
     name: "Mailectron",
