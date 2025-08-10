@@ -87,7 +87,7 @@ export default function Home() {
         </div>
       </div>
       <div className="space-y-8 py-8 sm:py-16">
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           <h2 className="font-medium text-2xl">Projets</h2>
           <p className="text-muted-foreground">
             Une sélection de projets personnels que j'ai réalisés avec React et
