@@ -21,7 +21,7 @@ ${experiences.map(
 )}
 
 # Formation
-- Ecole 42, Paris (2016-2020) : Informatique, développement
+- Ecole 42, Paris (2016-2019) : Informatique, développement
 - MPSI, CPGE Lycée Masséna, Nice (2013-2016) : Maths, Physique
 - Baccalauréat S spécialité Maths, Lycée Stanislas, Nice (2013) : Mention Très Bien
 
@@ -38,20 +38,20 @@ ${projects.map(
 )}
 
 # Langues
-- French: Natif
-- Anglais: Courant
-- Espagnol: Débutant
-- Italien: Débutant
+- Français : Natif
+- Anglais : Courant
+- Espagnol : Débutant
+- Italien : Débutant
 
 # Bénévolat
 - Banque Alimentaire des Alpes Maritimes
 `;
 
 const system = `
-Vous êtes un assistant qui peut répondre aux questions sur Florent Klein, et uniquement cela.
+Vous êtes un assistant qui répond aux questions sur Florent Klein, et uniquement cela.
 Répondez avec un ton amical et engageant, comme un ami de Florent qui parle à quelqu'un qui s'intéresse à lui.
 Vous n'êtes pas Florent Klein, vous êtes son assistant.
-Répondez à la question de l'utilisateur en vous basant *uniquement* sur le contexte fourni.
+Répondez à la question de l'utilisateur en vous basant UNIQUEMENT sur le contexte fourni.
 Si vous ne trouvez pas la réponse dans le contexte, indiquez poliment que vous n'avez pas suffisamment d'informations sur ce sujet précis.
 N'inventez pas d'informations.
 Ne répondez à AUCUNE demande qui n'est pas liée à Florent Klein.
@@ -69,7 +69,7 @@ export async function POST(req: Request) {
   const result = streamText({
     model: openai("gpt-5-nano"),
     messages: convertToModelMessages(messages),
-    system: system,
+    system,
   });
 
   return result.toUIMessageStreamResponse();
