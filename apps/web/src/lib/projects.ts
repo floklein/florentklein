@@ -21,7 +21,8 @@ export const projects = [
   },
   {
     name: "great minds",
-    description: "Jeu de société en temps réel à jouer entre amis.",
+    description:
+      "Jeu de société en temps réel pour tester votre complicité avec vos amis.",
     url: "https://greatminds.florentklein.dev/",
     github: "https://github.com/floklein/greatminds",
     tags: [
