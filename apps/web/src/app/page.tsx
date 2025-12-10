@@ -90,8 +90,8 @@ export default function Home() {
         <div className="space-y-0.5">
           <h2 className="font-medium text-2xl">Projets</h2>
           <p className="text-muted-foreground">
-            Une sélection de projets personnels que j'ai réalisés avec React et
-            TypeScript, et déployés avec Coolify.
+            Une sélection de projets personnels que j&apos;ai réalisés avec
+            React et TypeScript, et déployés avec Coolify.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

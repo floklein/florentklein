@@ -9,7 +9,7 @@ export function Message({ message }: { message: UIMessage }) {
   return (
     <motion.div
       className={cn(
-        "max-h-[50svh] max-w-[80%] self-start overflow-y-auto whitespace-pre-wrap rounded-lg border-1 bg-secondary px-4 py-3",
+        "max-h-[50svh] max-w-[80%] self-start overflow-y-auto whitespace-pre-wrap rounded-lg border bg-secondary px-4 py-3",
         message.role === "user" &&
           "self-end bg-primary text-primary-foreground",
       )}
