@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack --port=3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.77",
@@ -33,11 +33,13 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
+    "@tanstack/react-query-devtools": "^5.91.1",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.0.8",
     "tailwindcss": "^4.1.17",
-    "typescript": "^5",
-    "@tanstack/react-query-devtools": "^5.91.1"
+    "typescript": "^5"
   }
 }

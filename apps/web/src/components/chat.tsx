@@ -64,7 +64,7 @@ export function Chat() {
           <div className="relative">
             <div
               className={cn(
-                "-inset-10 absolute bg-radial from-indigo-400/50 via-transparent to-transparent opacity-50 transition-opacity",
+                "-inset-10 absolute bg-radial from-indigo-400/75 via-transparent to-transparent opacity-50 transition-opacity",
                 isFocused && "opacity-100",
                 status === "streaming" || status === "submitted"
                   ? "animate-ai1-fast"
@@ -73,7 +73,7 @@ export function Chat() {
             />
             <div
               className={cn(
-                "-inset-10 absolute bg-radial from-pink-400/50 via-transparent to-transparent opacity-50 transition-opacity",
+                "-inset-10 absolute bg-radial from-pink-400/75 via-transparent to-transparent opacity-50 transition-opacity",
                 isFocused && "opacity-100",
                 status === "streaming" || status === "submitted"
                   ? "animate-ai2-fast"
