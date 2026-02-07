@@ -91,7 +91,7 @@ export default function Home() {
           <h2 className="font-medium text-2xl">Projets</h2>
           <p className="text-muted-foreground">
             Une sélection de projets personnels que j&apos;ai réalisés avec
-            React et TypeScript, et déployés avec Coolify.
+            React et TypeScript, et auto-déployés avec Coolify.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

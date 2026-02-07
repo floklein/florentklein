@@ -26,7 +26,7 @@ ${experiences.map(
 - Baccalauréat S spécialité Maths, Lycée Stanislas, Nice (2013) : Mention Très Bien
 
 # Projets
-Voici une sélection de projets personnels que Florent Klein a construits en utilisant React et TypeScript, et déployés en utilisant Coolify.
+Voici une sélection de projets personnels que Florent Klein a construits en utilisant React et TypeScript, et auto-déployés en utilisant Coolify.
 ${projects.map(
   (project) => `
   ## ${project.name}
