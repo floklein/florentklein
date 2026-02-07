@@ -44,13 +44,6 @@ export const projects = [
     tags: ["Next.js", "Tailwind", "Shadcn", "Zod"],
   },
   {
-    name: "kAI",
-    description: "Chat IA multi-modal hors-ligne pour Chrome Gemini Nano.",
-    github: "https://github.com/floklein/kai",
-    url: "https://kai.florentklein.dev/",
-    tags: ["Vite", "Dexie", "TanStack Router", "Tailwind", "Shadcn"],
-  },
-  {
     name: "K3 Chat",
     description: "Chat IA multi-modal avec choix du modèle.",
     github: "https://github.com/floklein/k3chat",
@@ -71,6 +64,12 @@ export const projects = [
     github: "https://github.com/floklein/florentklein",
     url: "https://florentklein.dev/",
     tags: ["Next.js", "AI SDK", "GPT-5", "Tailwind", "Shadcn"],
+  },
+  {
+    name: "kAI",
+    description: "Chat IA multi-modal hors-ligne pour Chrome Gemini Nano.",
+    github: "https://github.com/floklein/kai",
+    tags: ["Vite", "Dexie", "TanStack Router", "Tailwind", "Shadcn"],
   },
   {
     name: "HALP!",
