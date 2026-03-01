@@ -21,9 +21,18 @@ export const projects = [
   },
   {
     name: "Terra TCG",
-    description: "Jeu mobile de cartes à collectionner où vous capturez des animaux en les photographiant.",
+    description:
+      "Jeu mobile de cartes à collectionner où vous capturez des animaux en les photographiant.",
     github: "https://github.com/floklein/terra",
-    tags: ["Claude Code", "React Native", "Expo", "IA", "BetterAuth", "Drizzle", "PostgreSQL"],
+    tags: [
+      "Claude Code",
+      "React Native",
+      "Expo",
+      "IA",
+      "BetterAuth",
+      "Drizzle",
+      "PostgreSQL",
+    ],
   },
   {
     name: "great minds",
@@ -44,10 +53,19 @@ export const projects = [
   },
   {
     name: "Le jeu du Dico",
-    description: "Jeu multijoueur où vous piégez vos amis en inventant des définitions de mots difficiles.",
+    description:
+      "Jeu multijoueur où vous piégez vos amis en inventant des définitions de mots difficiles.",
     github: "https://github.com/floklein/dico",
     url: "https://dico.florentklein.dev/",
-    tags: ["Codex", "Next.js", "AI SDK", "GPT-5.2", "Tailwind", "Shadcn", "Vitest"],
+    tags: [
+      "Codex",
+      "Next.js",
+      "AI SDK",
+      "GPT-5.2",
+      "Tailwind",
+      "Shadcn",
+      "Vitest",
+    ],
   },
   {
     name: "Artguessr",
@@ -77,6 +95,25 @@ export const projects = [
     github: "https://github.com/floklein/florentklein",
     url: "https://florentklein.dev/",
     tags: ["Next.js", "AI SDK", "GPT-5", "Tailwind", "Shadcn"],
+  },
+  {
+    name: "kAI",
+    description: "Chat IA multi-modal hors-ligne pour Chrome Gemini Nano.",
+    github: "https://github.com/floklein/kai",
+    tags: ["Vite", "Dexie", "TanStack Router", "Tailwind", "Shadcn"],
+  },
+  {
+    name: "HALP!",
+    description: "App sociale autour des sondages pour iOS, Android et le web.",
+    github: "https://github.com/floklein/halp",
+    tags: [
+      "React Native",
+      "Expo",
+      "PostgreSQL",
+      "Drizzle",
+      "BetterAuth",
+      "Tamagui",
+    ],
   },
   {
     name: "Mailectron",
