@@ -1,4 +1,14 @@
-export const projects = [
+type ProjectTag = [name: string, url: string];
+
+type Project = {
+  name: string;
+  description: string;
+  url?: string;
+  github?: string;
+  tags: ProjectTag[];
+};
+
+export const projects: Project[] = [
   {
     name: "Ambiance",
     description:
@@ -6,17 +16,17 @@ export const projects = [
     url: "https://ambiance.florentklein.dev/",
     github: "https://github.com/floklein/ambiance",
     tags: [
-      "Vite",
-      "TanStack Router",
-      "TanStack Query",
-      "Bun",
-      "Hono",
-      "tRPC",
-      "BetterAuth",
-      "Drizzle",
-      "Gemini",
-      "Tailwind",
-      "Shadcn",
+      ["Vite", "https://vite.dev/"],
+      ["TanStack Router", "https://tanstack.com/router"],
+      ["TanStack Query", "https://tanstack.com/query"],
+      ["Bun", "https://bun.sh/"],
+      ["Hono", "https://hono.dev/"],
+      ["tRPC", "https://trpc.io/"],
+      ["BetterAuth", "https://www.better-auth.com/"],
+      ["Drizzle", "https://orm.drizzle.team/"],
+      ["Gemini", "https://deepmind.google/models/gemini/"],
+      ["Tailwind", "https://tailwindcss.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
     ],
   },
   {
@@ -25,13 +35,13 @@ export const projects = [
       "Jeu mobile de cartes à collectionner où vous capturez des animaux en les photographiant.",
     github: "https://github.com/floklein/terra",
     tags: [
-      "Claude Code",
-      "React Native",
-      "Expo",
-      "IA",
-      "BetterAuth",
-      "Drizzle",
-      "PostgreSQL",
+      ["Claude Code", "https://www.anthropic.com/claude-code"],
+      ["React Native", "https://reactnative.dev/"],
+      ["Expo", "https://expo.dev/"],
+      ["IA", "https://openai.com/"],
+      ["BetterAuth", "https://www.better-auth.com/"],
+      ["Drizzle", "https://orm.drizzle.team/"],
+      ["PostgreSQL", "https://www.postgresql.org/"],
     ],
   },
   {
@@ -41,14 +51,14 @@ export const projects = [
     url: "https://greatminds.florentklein.dev/",
     github: "https://github.com/floklein/greatminds",
     tags: [
-      "Vite",
-      "WebSocket",
-      "Ant Design",
-      "Colyseus",
-      "Motion",
-      "TanStack Query",
-      "Zustand",
-      "Turborepo",
+      ["Vite", "https://vite.dev/"],
+      ["WebSocket", "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API"],
+      ["Ant Design", "https://ant.design/"],
+      ["Colyseus", "https://www.colyseus.io/"],
+      ["Motion", "https://motion.dev/"],
+      ["TanStack Query", "https://tanstack.com/query"],
+      ["Zustand", "https://zustand.docs.pmnd.rs/"],
+      ["Turborepo", "https://turborepo.com/"],
     ],
   },
   {
@@ -58,13 +68,13 @@ export const projects = [
     github: "https://github.com/floklein/dico",
     url: "https://dico.florentklein.dev/",
     tags: [
-      "Codex",
-      "Next.js",
-      "AI SDK",
-      "GPT-5.2",
-      "Tailwind",
-      "Shadcn",
-      "Vitest",
+      ["Codex", "https://openai.com/codex/"],
+      ["Next.js", "https://nextjs.org/"],
+      ["AI SDK", "https://ai-sdk.dev/"],
+      ["GPT-5.2", "https://openai.com/api/"],
+      ["Tailwind", "https://tailwindcss.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
+      ["Vitest", "https://vitest.dev/"],
     ],
   },
   {
@@ -72,7 +82,12 @@ export const projects = [
     description: "Jeu éducatif consistant à deviner la date d'une œuvre d'art.",
     github: "https://github.com/floklein/artguessr",
     url: "https://artguessr.florentklein.dev/",
-    tags: ["Next.js", "Tailwind", "Shadcn", "Zod"],
+    tags: [
+      ["Next.js", "https://nextjs.org/"],
+      ["Tailwind", "https://tailwindcss.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
+      ["Zod", "https://zod.dev/"],
+    ],
   },
   {
     name: "K3 Chat",
@@ -80,13 +95,13 @@ export const projects = [
     github: "https://github.com/floklein/k3chat",
     url: "https://cloneathon.t3.chat/",
     tags: [
-      "Next.js",
-      "Convex",
-      "Gemini",
-      "Claude",
-      "GPT",
-      "Tailwind",
-      "Shadcn",
+      ["Next.js", "https://nextjs.org/"],
+      ["Convex", "https://www.convex.dev/"],
+      ["Gemini", "https://deepmind.google/models/gemini/"],
+      ["Claude", "https://www.anthropic.com/claude"],
+      ["GPT", "https://openai.com/chatgpt/"],
+      ["Tailwind", "https://tailwindcss.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
     ],
   },
   {
@@ -94,30 +109,49 @@ export const projects = [
     description: "Ce portfolio, avec son assistant IA.",
     github: "https://github.com/floklein/florentklein",
     url: "https://florentklein.dev/",
-    tags: ["Next.js", "AI SDK", "GPT-5", "Tailwind", "Shadcn"],
+    tags: [
+      ["Next.js", "https://nextjs.org/"],
+      ["AI SDK", "https://ai-sdk.dev/"],
+      ["GPT-5", "https://openai.com/gpt-5/"],
+      ["Tailwind", "https://tailwindcss.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
+    ],
   },
   {
     name: "kAI",
     description: "Chat IA multi-modal hors-ligne pour Chrome Gemini Nano.",
     github: "https://github.com/floklein/kai",
-    tags: ["Vite", "Dexie", "TanStack Router", "Tailwind", "Shadcn"],
+    tags: [
+      ["Vite", "https://vite.dev/"],
+      ["Dexie", "https://dexie.org/"],
+      ["TanStack Router", "https://tanstack.com/router"],
+      ["Tailwind", "https://tailwindcss.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
+    ],
   },
   {
     name: "HALP!",
     description: "App sociale autour des sondages pour iOS, Android et le web.",
     github: "https://github.com/floklein/halp",
     tags: [
-      "React Native",
-      "Expo",
-      "PostgreSQL",
-      "Drizzle",
-      "BetterAuth",
-      "Tamagui",
+      ["React Native", "https://reactnative.dev/"],
+      ["Expo", "https://expo.dev/"],
+      ["PostgreSQL", "https://www.postgresql.org/"],
+      ["Drizzle", "https://orm.drizzle.team/"],
+      ["BetterAuth", "https://www.better-auth.com/"],
+      ["Tamagui", "https://tamagui.dev/"],
     ],
   },
   {
     name: "Mailectron",
     description: "Client mail minimaliste pour macOS et Windows.",
-    tags: ["Electron", "tRPC", "Supabase", "Turborepo", "Tailwind", "Shadcn"],
+    tags: [
+      ["Electron", "https://www.electronjs.org/"],
+      ["tRPC", "https://trpc.io/"],
+      ["Supabase", "https://supabase.com/"],
+      ["Turborepo", "https://turborepo.com/"],
+      ["Tailwind", "https://tailwindcss.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
+    ],
   },
 ];
