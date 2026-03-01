@@ -4,8 +4,11 @@ export const experiences = [
     title: "Lead Frontend",
     description: [
       "Management d'une équipe de 6 développeurs",
-      "Recrutement, formation",
-      "Mise en place de processus QA et DX",
+      "Prises de décisions techniques majeures",
+      "Recrutement et formation de stagiaires et de juniors",
+      "Mise en place du processus QA : suite de tests automatisés et manuels, organisation du processus de livraison",
+      "Amélioration du processus DX : gestion de la dette technique, organisation de grandes migrations",
+      "Vite, Jest, Qase",
     ],
     startDate: "2023",
     endDate: "Present",
@@ -14,8 +17,9 @@ export const experiences = [
     company: "Dametis - Paris",
     title: "Développeur Frontend",
     description: [
+      "Développement de nouvelles fonctionnalités",
       "Conception UI/UX",
-      "React, TypeScript, MUI, Webpack, Highcharts, JointJS, Redux, RTK Query",
+      "TypeScript, Zustand, RTK Query",
     ],
     startDate: "2020",
     endDate: "2023",
@@ -23,7 +27,10 @@ export const experiences = [
   {
     company: "Dametis - Paris",
     title: "Stagiaire développeur Frontend",
-    description: ["Lancement de la première version du SaaS"],
+    description: [
+      "Création de la première version du SaaS",
+      "React, JavaScript, MUI, Webpack, Highcharts, JointJS, Redux",
+    ],
     startDate: "2019",
     endDate: "2020",
   },

@@ -2,7 +2,7 @@ export const projects = [
   {
     name: "Ambiance",
     description:
-      "App IA qui écoute votre scénario de D&D pour jouer la musique appropriée.",
+      "App IA qui écoute votre scénario de jeu de rôle pour jouer la musique appropriée.",
     url: "https://ambiance.florentklein.dev/",
     github: "https://github.com/floklein/ambiance",
     tags: [
@@ -20,9 +20,15 @@ export const projects = [
     ],
   },
   {
+    name: "Terra TCG",
+    description: "Jeu mobile de cartes à collectionner où vous capturez des animaux en les photographiant.",
+    github: "https://github.com/floklein/terra",
+    tags: ["Claude Code", "React Native", "Expo", "IA", "BetterAuth", "Drizzle", "PostgreSQL"],
+  },
+  {
     name: "great minds",
     description:
-      "Jeu de société en temps réel pour tester votre complicité avec vos amis.",
+      "Jeu en temps réel pour tester votre complicité avec vos amis sur des thèmes variés.",
     url: "https://greatminds.florentklein.dev/",
     github: "https://github.com/floklein/greatminds",
     tags: [
@@ -35,6 +41,13 @@ export const projects = [
       "Zustand",
       "Turborepo",
     ],
+  },
+  {
+    name: "Le jeu du Dico",
+    description: "Jeu multijoueur où vous piégez vos amis en inventant des définitions de mots difficiles.",
+    github: "https://github.com/floklein/dico",
+    url: "https://dico.florentklein.dev/",
+    tags: ["Codex", "Next.js", "AI SDK", "GPT-5.2", "Tailwind", "Shadcn", "Vitest"],
   },
   {
     name: "Artguessr",
@@ -64,25 +77,6 @@ export const projects = [
     github: "https://github.com/floklein/florentklein",
     url: "https://florentklein.dev/",
     tags: ["Next.js", "AI SDK", "GPT-5", "Tailwind", "Shadcn"],
-  },
-  {
-    name: "kAI",
-    description: "Chat IA multi-modal hors-ligne pour Chrome Gemini Nano.",
-    github: "https://github.com/floklein/kai",
-    tags: ["Vite", "Dexie", "TanStack Router", "Tailwind", "Shadcn"],
-  },
-  {
-    name: "HALP!",
-    description: "App sociale autour des sondages pour iOS, Android et le web.",
-    github: "https://github.com/floklein/halp",
-    tags: [
-      "React Native",
-      "Expo",
-      "PostgreSQL",
-      "Drizzle",
-      "BetterAuth",
-      "Tamagui",
-    ],
   },
   {
     name: "Mailectron",
