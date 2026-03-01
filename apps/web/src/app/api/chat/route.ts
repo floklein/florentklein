@@ -31,7 +31,7 @@ ${projects.map(
   (project) => `
   ## ${project.name}
   ${project.description}
-  - Stack : ${project.tags.join(", ")}
+  - Stack : ${project.tags.map(([tagName]) => tagName).join(", ")}
   ${project.url ? `- URL : ${project.url}` : ""}
   ${project.github ? `- GitHub : ${project.github}` : ""}
   `,

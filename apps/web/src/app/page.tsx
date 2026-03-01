@@ -128,9 +128,15 @@ export default function Home() {
                 </CardAction>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary">
-                    {tag}
+                {project.tags.map(([tagName, tagUrl]) => (
+                  <Badge key={`${project.name}-${tagName}`} variant="secondary" asChild>
+                    <Link
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={tagUrl}
+                    >
+                      {tagName}
+                    </Link>
                   </Badge>
                 ))}
               </CardContent>
