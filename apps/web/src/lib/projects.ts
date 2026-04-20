@@ -4,11 +4,42 @@ type Project = {
   name: string;
   description: string;
   url?: string;
+  appStore?: string;
   github?: string;
   tags: ProjectTag[];
 };
 
 export const projects: Project[] = [
+  {
+    name: "Chef",
+    description:
+      "SaaS de gestion automatisée des repas hospitaliers, respectant les normes d'équilibre nutritionnel, et les contraintes patient et métier.",
+    url: "https://chef.florentklein.dev/",
+    tags: [
+      ["Next.js", "https://nextjs.org/"],
+      ["Tailwind", "https://tailwindcss.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
+      ["Playwright", "https://playwright.dev/"],
+      ["Claude Code", "https://www.anthropic.com/claude-code"],
+    ],
+  },
+  {
+    name: "MacGuffin",
+    description:
+      "App mobile pour découvrir les meilleurs films à voir au cinéma autour de soi, et réserver sa séance.",
+    appStore: "https://apps.apple.com/fr/app/macguffin/id6761733673",
+    tags: [
+      ["React Native", "https://reactnative.dev/"],
+      ["Expo", "https://expo.dev/"],
+      ["Nativewind", "https://nativewind.dev/"],
+      ["RN Reusables", "https://reactnativereusables.com/"],
+      ["TanStack Query", "https://tanstack.com/query"],
+      ["BetterAuth", "https://www.better-auth.com/"],
+      ["Drizzle", "https://orm.drizzle.team/"],
+      ["PostgreSQL", "https://www.postgresql.org/"],
+      ["Zod", "https://zod.dev/"],
+    ],
+  },
   {
     name: "Ambiance",
     description:
@@ -35,13 +66,13 @@ export const projects: Project[] = [
       "Jeu mobile de cartes à collectionner où vous capturez des animaux en les photographiant.",
     github: "https://github.com/floklein/terra",
     tags: [
-      ["Claude Code", "https://www.anthropic.com/claude-code"],
       ["React Native", "https://reactnative.dev/"],
       ["Expo", "https://expo.dev/"],
       ["IA", "https://openai.com/"],
       ["BetterAuth", "https://www.better-auth.com/"],
       ["Drizzle", "https://orm.drizzle.team/"],
       ["PostgreSQL", "https://www.postgresql.org/"],
+      ["Claude Code", "https://www.anthropic.com/claude-code"],
     ],
   },
   {
@@ -52,7 +83,10 @@ export const projects: Project[] = [
     github: "https://github.com/floklein/greatminds",
     tags: [
       ["Vite", "https://vite.dev/"],
-      ["WebSocket", "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API"],
+      [
+        "WebSocket",
+        "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
+      ],
       ["Ant Design", "https://ant.design/"],
       ["Colyseus", "https://www.colyseus.io/"],
       ["Motion", "https://motion.dev/"],
@@ -68,13 +102,13 @@ export const projects: Project[] = [
     github: "https://github.com/floklein/dico",
     url: "https://dico.florentklein.dev/",
     tags: [
-      ["Codex", "https://openai.com/codex/"],
       ["Next.js", "https://nextjs.org/"],
       ["AI SDK", "https://ai-sdk.dev/"],
       ["GPT-5.2", "https://openai.com/api/"],
       ["Tailwind", "https://tailwindcss.com/"],
       ["Shadcn", "https://ui.shadcn.com/"],
       ["Vitest", "https://vitest.dev/"],
+      ["Codex", "https://openai.com/codex/"],
     ],
   },
   {
@@ -105,6 +139,18 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "Mailectron",
+    description: "Client mail minimaliste pour macOS et Windows.",
+    tags: [
+      ["Electron", "https://www.electronjs.org/"],
+      ["tRPC", "https://trpc.io/"],
+      ["Supabase", "https://supabase.com/"],
+      ["Turborepo", "https://turborepo.com/"],
+      ["Tailwind", "https://tailwindcss.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
+    ],
+  },
+  {
     name: "florentklein.dev",
     description: "Ce portfolio, avec son assistant IA.",
     github: "https://github.com/floklein/florentklein",
@@ -113,43 +159,6 @@ export const projects: Project[] = [
       ["Next.js", "https://nextjs.org/"],
       ["AI SDK", "https://ai-sdk.dev/"],
       ["GPT-5", "https://openai.com/gpt-5/"],
-      ["Tailwind", "https://tailwindcss.com/"],
-      ["Shadcn", "https://ui.shadcn.com/"],
-    ],
-  },
-  {
-    name: "kAI",
-    description: "Chat IA multi-modal hors-ligne pour Chrome Gemini Nano.",
-    github: "https://github.com/floklein/kai",
-    tags: [
-      ["Vite", "https://vite.dev/"],
-      ["Dexie", "https://dexie.org/"],
-      ["TanStack Router", "https://tanstack.com/router"],
-      ["Tailwind", "https://tailwindcss.com/"],
-      ["Shadcn", "https://ui.shadcn.com/"],
-    ],
-  },
-  {
-    name: "HALP!",
-    description: "App sociale autour des sondages pour iOS, Android et le web.",
-    github: "https://github.com/floklein/halp",
-    tags: [
-      ["React Native", "https://reactnative.dev/"],
-      ["Expo", "https://expo.dev/"],
-      ["PostgreSQL", "https://www.postgresql.org/"],
-      ["Drizzle", "https://orm.drizzle.team/"],
-      ["BetterAuth", "https://www.better-auth.com/"],
-      ["Tamagui", "https://tamagui.dev/"],
-    ],
-  },
-  {
-    name: "Mailectron",
-    description: "Client mail minimaliste pour macOS et Windows.",
-    tags: [
-      ["Electron", "https://www.electronjs.org/"],
-      ["tRPC", "https://trpc.io/"],
-      ["Supabase", "https://supabase.com/"],
-      ["Turborepo", "https://turborepo.com/"],
       ["Tailwind", "https://tailwindcss.com/"],
       ["Shadcn", "https://ui.shadcn.com/"],
     ],
