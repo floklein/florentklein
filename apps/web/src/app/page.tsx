@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { Apple } from "@/components/apple";
 import { GitHub } from "@/components/github";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -67,7 +68,15 @@ export default function Home() {
               >
                 <CardHeader>
                   <CardTitle>{experience.title}</CardTitle>
-                  <CardDescription>{experience.company}</CardDescription>
+                  <CardDescription>
+                    <Link
+                      href={experience.companyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {experience.company}
+                    </Link>
+                  </CardDescription>
                   <CardAction>
                     <p className="text-muted-foreground text-xs">
                       {experience.startDate} - {experience.endDate}
@@ -113,6 +122,18 @@ export default function Home() {
                       </Link>
                     </Button>
                   )}
+                  {project.appStore && (
+                    <Button variant="ghost" size="icon" asChild>
+                      <Link
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={project.appStore}
+                        aria-label="Lien vers l'App Store"
+                      >
+                        <Apple />
+                      </Link>
+                    </Button>
+                  )}
                   {project.url && (
                     <Button variant="ghost" size="icon" asChild>
                       <Link
@@ -129,7 +150,11 @@ export default function Home() {
               </CardHeader>
               <CardContent className="flex flex-wrap gap-2">
                 {project.tags.map(([tagName, tagUrl]) => (
-                  <Badge key={`${project.name}-${tagName}`} variant="secondary" asChild>
+                  <Badge
+                    key={`${project.name}-${tagName}`}
+                    variant="secondary"
+                    asChild
+                  >
                     <Link
                       target="_blank"
                       rel="noopener noreferrer"

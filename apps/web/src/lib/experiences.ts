@@ -1,6 +1,7 @@
 export const experiences = [
   {
     company: "Dametis - Paris",
+    companyUrl: "https://dametis.com/",
     title: "Lead Frontend",
     description: [
       "Management d'une équipe de 6 développeurs",
@@ -15,6 +16,7 @@ export const experiences = [
   },
   {
     company: "Dametis - Paris",
+    companyUrl: "https://dametis.com/",
     title: "Développeur Frontend",
     description: [
       "Développement de nouvelles fonctionnalités",
@@ -26,6 +28,7 @@ export const experiences = [
   },
   {
     company: "Dametis - Paris",
+    companyUrl: "https://dametis.com/",
     title: "Stagiaire développeur Frontend",
     description: [
       "Création de la première version du SaaS",
@@ -36,6 +39,7 @@ export const experiences = [
   },
   {
     company: "Anacours - Paris",
+    companyUrl: "https://anacours.com/",
     title: "Professeur particulier",
     description: [
       "Cours de mathématiques et de sciences, pour des collégiens et des lycéens.",
