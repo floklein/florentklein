@@ -76,6 +76,24 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "Courrier",
+    description: "Client mail minimaliste pour macOS et Windows.",
+    github: "https://github.com/floklein/courrier",
+    tags: [
+      ["Electron", "https://www.electronjs.org/"],
+      ["Vite", "https://vite.dev/"],
+      ["Zustand", "https://zustand.docs.pmnd.rs/"],
+      ["Zod", "https://zod.dev/"],
+      ["TS Router", "https://tanstack.com/router"],
+      ["TS Query", "https://tanstack.com/query"],
+      ["TS Virtual", "https://tanstack.com/virtual"],
+      ["Turborepo", "https://turborepo.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
+      ["Vitest", "https://vitest.dev/"],
+      ["Codex", "https://openai.com/codex/"],
+    ],
+  },
+  {
     name: "great minds",
     description:
       "Jeu en temps réel pour tester votre complicité avec vos amis sur des thèmes variés.",
@@ -93,22 +111,6 @@ export const projects: Project[] = [
       ["TanStack Query", "https://tanstack.com/query"],
       ["Zustand", "https://zustand.docs.pmnd.rs/"],
       ["Turborepo", "https://turborepo.com/"],
-    ],
-  },
-  {
-    name: "Le jeu du Dico",
-    description:
-      "Jeu multijoueur où vous piégez vos amis en inventant des définitions de mots difficiles.",
-    github: "https://github.com/floklein/dico",
-    url: "https://dico.florentklein.dev/",
-    tags: [
-      ["Next.js", "https://nextjs.org/"],
-      ["AI SDK", "https://ai-sdk.dev/"],
-      ["GPT-5.2", "https://openai.com/api/"],
-      ["Tailwind", "https://tailwindcss.com/"],
-      ["Shadcn", "https://ui.shadcn.com/"],
-      ["Vitest", "https://vitest.dev/"],
-      ["Codex", "https://openai.com/codex/"],
     ],
   },
   {
@@ -139,15 +141,19 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Mailectron",
-    description: "Client mail minimaliste pour macOS et Windows.",
+    name: "Le jeu du Dico",
+    description:
+      "Jeu multijoueur où vous piégez vos amis en inventant des définitions de mots difficiles.",
+    github: "https://github.com/floklein/dico",
+    url: "https://dico.florentklein.dev/",
     tags: [
-      ["Electron", "https://www.electronjs.org/"],
-      ["tRPC", "https://trpc.io/"],
-      ["Supabase", "https://supabase.com/"],
-      ["Turborepo", "https://turborepo.com/"],
+      ["Next.js", "https://nextjs.org/"],
+      ["AI SDK", "https://ai-sdk.dev/"],
+      ["GPT-5.2", "https://openai.com/api/"],
       ["Tailwind", "https://tailwindcss.com/"],
       ["Shadcn", "https://ui.shadcn.com/"],
+      ["Vitest", "https://vitest.dev/"],
+      ["Codex", "https://openai.com/codex/"],
     ],
   },
   {
