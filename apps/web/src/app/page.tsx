@@ -22,13 +22,6 @@ import { cn } from "@/lib/utils";
 
 type FeaturedProjectItem = Project & { featured: FeaturedProject };
 
-const featuredToneClasses: Record<FeaturedProject["tone"], string> = {
-  cinema:
-    "border-red-200/80 bg-red-50/70 dark:border-red-900/60 dark:bg-red-950/25",
-  health:
-    "border-emerald-200/80 bg-emerald-50/70 dark:border-emerald-900/60 dark:bg-emerald-950/25",
-};
-
 const featuredKickerClasses: Record<FeaturedProject["tone"], string> = {
   cinema: "text-red-700 dark:text-red-300",
   health: "text-emerald-700 dark:text-emerald-300",
@@ -41,8 +34,7 @@ const featuredTagClasses: Record<FeaturedProject["tone"], string> = {
     "bg-emerald-100/80 text-emerald-950 [a&]:hover:bg-emerald-100 dark:bg-emerald-950/70 dark:text-emerald-100 dark:[a&]:hover:bg-emerald-950",
 };
 
-const featuredImageClassName =
-  "w-[152%] max-w-[800px] sm:w-[140%] lg:w-[146%] lg:max-w-[880px]";
+const featuredImageClassName = "w-full max-w-full";
 
 function hasFeaturedProject(project: Project): project is FeaturedProjectItem {
   return project.featured !== undefined;
@@ -84,15 +76,15 @@ function FeaturedProjectMedia({
   className?: string;
 }) {
   const imageClassName = cn(
-    "h-auto max-w-none shrink-0 select-none transition-transform duration-500 group-hover:scale-[1.015]",
+    "h-auto select-none transition-transform duration-250 group-hover:scale-[1.01]",
     featuredImageClassName,
-    "max-w-none",
   );
 
   return (
     <div
       className={cn(
-        "relative flex min-h-64 items-center justify-center overflow-visible sm:min-h-80 lg:min-h-96",
+        "relative flex min-h-64 items-center overflow-visible sm:min-h-80 lg:min-h-96",
+        featured.imagePosition === "left" ? "justify-end" : "justify-start",
         className,
       )}
     >
@@ -122,17 +114,14 @@ function FeaturedProjectCard({ project }: { project: FeaturedProjectItem }) {
   const href = getProjectHref(project);
 
   return (
-    <article
-      className={cn(
-        "group overflow-hidden rounded-xl border transition-colors",
-        featuredToneClasses[project.featured.tone],
-      )}
-    >
-      <div className="grid gap-8 p-6 sm:p-10 lg:min-h-[420px] lg:grid-cols-2 lg:items-center lg:gap-12">
+    <Card className="group overflow-visible">
+      <div className="grid gap-8 px-6 lg:min-h-[420px] lg:grid-cols-2 lg:items-center lg:gap-12">
         <div
           className={cn(
             "max-w-lg space-y-5",
-            project.featured.imagePosition === "left" && "lg:order-2",
+            project.featured.imagePosition === "left"
+              ? "lg:order-2"
+              : "lg:ml-auto",
           )}
         >
           <div className="space-y-3">
@@ -155,7 +144,7 @@ function FeaturedProjectCard({ project }: { project: FeaturedProjectItem }) {
             <ProjectTags project={project} />
           </div>
           {href && (
-            <Button className="h-9 gap-2 rounded-md px-4" asChild>
+            <Button className="mt-2 h-9 gap-2 rounded-md px-4" asChild>
               <Link target="_blank" rel="noopener noreferrer" href={href}>
                 {project.appStore && <Apple />}
                 <span>{project.featured.ctaLabel}</span>
@@ -172,7 +161,7 @@ function FeaturedProjectCard({ project }: { project: FeaturedProjectItem }) {
           )}
         />
       </div>
-    </article>
+    </Card>
   );
 }
 
@@ -271,14 +260,11 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {regularProjects.map((project) => (
-              <Card
-                key={project.name}
-                className="gap-4 rounded-xl py-5 shadow-none transition-colors hover:bg-accent/30"
-              >
-                <CardHeader className="gap-1 px-5">
+              <Card key={project.name}>
+                <CardHeader>
                   <CardTitle>{project.name}</CardTitle>
                   <CardDescription>{project.description}</CardDescription>
-                  <CardAction className="-mt-2 -mr-2 flex items-center">
+                  <CardAction className="flex items-center">
                     {project.github && (
                       <Button
                         variant="ghost"
@@ -332,7 +318,7 @@ export default function Home() {
                     )}
                   </CardAction>
                 </CardHeader>
-                <CardContent className="flex flex-wrap gap-1.5 px-5">
+                <CardContent className="flex flex-wrap gap-1.5">
                   <ProjectTags project={project} />
                 </CardContent>
               </Card>

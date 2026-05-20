@@ -27,7 +27,7 @@ export const projects: Project[] = [
       "App mobile pour découvrir les meilleurs films à voir au cinéma autour de soi, et réserver sa séance.",
     appStore: "https://apps.apple.com/fr/app/macguffin/id6761733673",
     featured: {
-      kicker: "Projet phare",
+      kicker: "App iOS",
       lightImage: "/macguffin-light.png",
       darkImage: "/macguffin-dark.png",
       imageAlt: "Écrans iPhone de MacGuffin",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
       "SaaS de gestion automatisée des repas hospitaliers, respectant les normes d'équilibre nutritionnel, et les contraintes patient et métier.",
     url: "https://chef.florentklein.dev/",
     featured: {
-      kicker: "Projet phare",
+      kicker: "SaaS",
       lightImage: "/chef-light.png",
       darkImage: "/chef-dark.png",
       imageAlt: "Interface de Chef affichée sur tablette",
