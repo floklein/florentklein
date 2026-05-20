@@ -1,33 +1,40 @@
 type ProjectTag = [name: string, url: string];
 
-type Project = {
+export type FeaturedProject = {
+  kicker: string;
+  lightImage: string;
+  darkImage: string;
+  imageAlt: string;
+  imagePosition: "left" | "right";
+  tone: "cinema" | "health";
+  ctaLabel: string;
+};
+
+export type Project = {
   name: string;
   description: string;
   url?: string;
   appStore?: string;
   github?: string;
+  featured?: FeaturedProject;
   tags: ProjectTag[];
 };
 
 export const projects: Project[] = [
   {
-    name: "Chef",
-    description:
-      "SaaS de gestion automatisée des repas hospitaliers, respectant les normes d'équilibre nutritionnel, et les contraintes patient et métier.",
-    url: "https://chef.florentklein.dev/",
-    tags: [
-      ["Next.js", "https://nextjs.org/"],
-      ["Tailwind", "https://tailwindcss.com/"],
-      ["Shadcn", "https://ui.shadcn.com/"],
-      ["Playwright", "https://playwright.dev/"],
-      ["Claude Code", "https://www.anthropic.com/claude-code"],
-    ],
-  },
-  {
     name: "MacGuffin",
     description:
       "App mobile pour découvrir les meilleurs films à voir au cinéma autour de soi, et réserver sa séance.",
     appStore: "https://apps.apple.com/fr/app/macguffin/id6761733673",
+    featured: {
+      kicker: "Projet phare",
+      lightImage: "/macguffin-light.png",
+      darkImage: "/macguffin-dark.png",
+      imageAlt: "Écrans iPhone de MacGuffin",
+      imagePosition: "left",
+      tone: "cinema",
+      ctaLabel: "Télécharger sur l'App Store",
+    },
     tags: [
       ["React Native", "https://reactnative.dev/"],
       ["Expo", "https://expo.dev/"],
@@ -38,6 +45,28 @@ export const projects: Project[] = [
       ["Drizzle", "https://orm.drizzle.team/"],
       ["PostgreSQL", "https://www.postgresql.org/"],
       ["Zod", "https://zod.dev/"],
+    ],
+  },
+  {
+    name: "Chef",
+    description:
+      "SaaS de gestion automatisée des repas hospitaliers, respectant les normes d'équilibre nutritionnel, et les contraintes patient et métier.",
+    url: "https://chef.florentklein.dev/",
+    featured: {
+      kicker: "Projet phare",
+      lightImage: "/chef-light.png",
+      darkImage: "/chef-dark.png",
+      imageAlt: "Interface de Chef affichée sur tablette",
+      imagePosition: "right",
+      tone: "health",
+      ctaLabel: "Visiter le site",
+    },
+    tags: [
+      ["Next.js", "https://nextjs.org/"],
+      ["Tailwind", "https://tailwindcss.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
+      ["Playwright", "https://playwright.dev/"],
+      ["Claude Code", "https://www.anthropic.com/claude-code"],
     ],
   },
   {
