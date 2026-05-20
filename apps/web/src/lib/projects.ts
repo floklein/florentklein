@@ -45,6 +45,8 @@ export const projects: Project[] = [
       ["Drizzle", "https://orm.drizzle.team/"],
       ["PostgreSQL", "https://www.postgresql.org/"],
       ["Zod", "https://zod.dev/"],
+      ["Sentry", "https://sentry.io/"],
+      ["PostHog", "https://posthog.com/"],
     ],
   },
   {
