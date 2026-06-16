@@ -21,7 +21,10 @@
       "!bts.jsonc",
       "!**/.expo",
       "!**/.wrangler",
-      "!**/.source"
+      "!**/.source",
+      "!**/.agents",
+      "!**/.impeccable",
+      "!**/.claude"
     ]
   },
   "formatter": {
