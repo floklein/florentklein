@@ -5,8 +5,10 @@
 
 @theme {
   --font-sans:
-    "Inter", "Geist", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono:
+    var(--font-geist-mono), ui-monospace, "SFMono-Regular", "Menlo", monospace;
   --animate-ai1: ai1 8s ease-in-out infinite;
   --animate-ai2: ai2 8s ease-in-out infinite;
   --animate-ai1-fast: ai1 1s ease-in-out infinite;
@@ -40,7 +42,7 @@ body {
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.5rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -152,9 +154,28 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Tight, optically-aligned display headings (Geist grotesque). */
+  .display {
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  /* Tabular mono metadata: dates, counts, technical fragments. */
+  .meta {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+  ::selection {
+    background: var(--foreground);
+    color: var(--background);
   }
   ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
@@ -162,5 +183,39 @@ body {
   ::-webkit-scrollbar-thumb {
     background: var(--border);
     border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+  }
+}
+
+/*
+ * Orchestrated page-load reveal.
+ * Content is visible by default (opacity 1); the @starting-style only supplies
+ * the entrance origin on first paint, so SSR / no-JS / reduced-motion renders
+ * the page fully visible — never gated on a class toggle.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    @starting-style {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+}
+
+/* Every shimmer/translate animation has a reduced-motion alternative: stillness. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-ai1,
+  .animate-ai2,
+  .animate-ai1-fast,
+  .animate-ai2-fast {
+    animation: none;
+  }
+  .rise {
+    transition: none;
   }
 }

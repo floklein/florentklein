@@ -1,6 +1,7 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
+import { ArrowUp } from "lucide-react";
 import { AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -13,18 +14,26 @@ export function Chat() {
   const [input, setInput] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
+  const isBusy = status === "streaming" || status === "submitted";
+  const canSend = status === "ready" && input.trim().length > 0;
+
+  function submit() {
+    if (status !== "ready") return;
+    const text = input.trim();
+    if (!text) return;
+    sendMessage({ text });
+    setInput("");
+  }
+
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
-      if (status !== "ready") return;
-      sendMessage({
-        text: input,
-      });
-      setInput("");
+      event.preventDefault();
+      submit();
     }
   }
 
   return (
-    <div className="pointer-events-none fixed right-0 bottom-0 left-0 flex items-center justify-center">
+    <div className="pointer-events-none fixed right-0 bottom-0 left-0 z-50 flex items-center justify-center">
       <div className="relative w-full max-w-2xl p-4 sm:p-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -51,8 +60,8 @@ export function Chat() {
           </defs>
         </svg>
         <div className="mask-[url(#mask)] absolute inset-0 backdrop-blur-sm" />
-        <div className="relative space-y-8">
-          {isFocused && (
+        <div className="relative space-y-4">
+          {isFocused && messages.length > 0 && (
             <div className="pointer-events-auto flex flex-col gap-2">
               <AnimatePresence>
                 {messages.slice(-1).map((message) => (
@@ -64,31 +73,38 @@ export function Chat() {
           <div className="relative">
             <div
               className={cn(
-                "-inset-10 absolute bg-radial from-indigo-400/75 via-transparent to-transparent opacity-50 transition-opacity",
+                "absolute -inset-10 bg-radial from-indigo-400/70 via-transparent to-transparent opacity-40 transition-opacity duration-500",
                 isFocused && "opacity-100",
-                status === "streaming" || status === "submitted"
-                  ? "animate-ai1-fast"
-                  : "animate-ai1",
+                isBusy ? "animate-ai1-fast" : "animate-ai1",
               )}
             />
             <div
               className={cn(
-                "-inset-10 absolute bg-radial from-pink-400/75 via-transparent to-transparent opacity-50 transition-opacity",
+                "absolute -inset-10 bg-radial from-pink-400/70 via-transparent to-transparent opacity-40 transition-opacity duration-500",
                 isFocused && "opacity-100",
-                status === "streaming" || status === "submitted"
-                  ? "animate-ai2-fast"
-                  : "animate-ai2",
+                isBusy ? "animate-ai2-fast" : "animate-ai2",
               )}
             />
             <Input
-              className="pointer-events-auto relative h-12 w-full bg-background px-4 text-lg md:text-lg dark:bg-accent"
-              placeholder="Posez une question à mon assistant..."
+              className="pointer-events-auto relative h-12 w-full rounded-lg bg-background pr-12 pl-4 text-base shadow-sm md:text-base dark:bg-accent"
+              placeholder="Posez une question à mon assistant…"
+              aria-label="Poser une question à l'assistant IA de Florent"
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               onKeyDown={handleKeyDown}
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
+            <button
+              type="button"
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={submit}
+              disabled={!canSend}
+              aria-label="Envoyer le message"
+              className="pointer-events-auto absolute top-1/2 right-2 flex size-8 -translate-y-1/2 items-center justify-center rounded-md bg-primary text-primary-foreground outline-none transition-all hover:bg-primary/90 focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-30"
+            >
+              <ArrowUp className="size-4" />
+            </button>
           </div>
         </div>
       </div>
