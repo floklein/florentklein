@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-17T00:00:00Z",
+  "title": "Design System: florentklein.dev",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink (near-black)",
+        "canonical": "oklch(0.205 0 0)",
+        "tonalRamp": ["oklch(0.15 0 0)", "oklch(0.205 0 0)", "oklch(0.30 0 0)", "oklch(0.43 0 0)", "oklch(0.556 0 0)", "oklch(0.708 0 0)", "oklch(0.85 0 0)", "oklch(0.97 0 0)"]
+      },
+      "cinema-accent": {
+        "role": "secondary",
+        "displayName": "Cinema Red",
+        "canonical": "oklch(0.505 0.213 27.5)",
+        "tonalRamp": ["oklch(0.35 0.16 27.5)", "oklch(0.44 0.20 27.5)", "oklch(0.505 0.213 27.5)", "oklch(0.60 0.20 25)", "oklch(0.70 0.16 22)", "oklch(0.808 0.114 19.6)", "oklch(0.90 0.06 20)", "oklch(0.96 0.02 20)"]
+      },
+      "health-accent": {
+        "role": "tertiary",
+        "displayName": "Health Green",
+        "canonical": "oklch(0.508 0.118 165.6)",
+        "tonalRamp": ["oklch(0.34 0.09 165.6)", "oklch(0.42 0.11 165.6)", "oklch(0.508 0.118 165.6)", "oklch(0.62 0.12 165)", "oklch(0.72 0.12 164)", "oklch(0.845 0.143 165)", "oklch(0.92 0.06 165)", "oklch(0.97 0.02 165)"]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Hairline Border",
+        "canonical": "oklch(0.922 0 0)",
+        "tonalRamp": ["oklch(0.15 0 0)", "oklch(0.30 0 0)", "oklch(0.45 0 0)", "oklch(0.556 0 0)", "oklch(0.708 0 0)", "oklch(0.85 0 0)", "oklch(0.922 0 0)", "oklch(1 0 0)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Featured project names — the largest type on the page." },
+      "headline": { "displayName": "Headline", "purpose": "The page H1 positioning statement." },
+      "title": { "displayName": "Title", "purpose": "Section headings and card titles." },
+      "body": { "displayName": "Body", "purpose": "Lead paragraphs and descriptions, in muted foreground; cap at 65–75ch." },
+      "label": { "displayName": "Kicker Label", "purpose": "Featured-project domain kicker only — never a section eyebrow." },
+      "mono": { "displayName": "Mono", "purpose": "Code/technical fragments only (Geist Mono)." }
+    },
+    "shadows": [
+      { "name": "edge-hint", "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)", "purpose": "Buttons and inputs — just enough to seat the control (shadow-xs)." },
+      { "name": "card-rest", "value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)", "purpose": "Cards at rest (shadow-sm). Subtle — a sheet of paper, not a floating panel." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default easing for state transitions (transition-all / transition-[color,box-shadow])." },
+      { "name": "media-hover-scale", "value": "transform 250ms", "purpose": "Featured project artwork lifts to scale(1.01) on card hover." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single key CTA — contact, featured project download/visit.",
+      "html": "<button class=\"ds-btn-primary\">Me contacter</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 8px 16px; border: none; border-radius: 8px; background: oklch(0.205 0 0); color: oklch(0.985 0 0); font: 500 14px/1 Inter, ui-sans-serif, system-ui, sans-serif; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); cursor: pointer; transition: background 200ms cubic-bezier(0.4,0,0.2,1); } .ds-btn-primary:hover { background: oklch(0.205 0 0 / 0.9); } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px oklch(0.708 0 0 / 0.5); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary links (LinkedIn, GitHub) — present but quiet.",
+      "html": "<button class=\"ds-btn-outline\">GitHub</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 8px 16px; border: 1px solid oklch(0.922 0 0); border-radius: 8px; background: oklch(1 0 0); color: oklch(0.145 0 0); font: 500 14px/1 Inter, ui-sans-serif, system-ui, sans-serif; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); cursor: pointer; transition: background 200ms cubic-bezier(0.4,0,0.2,1); } .ds-btn-outline:hover { background: oklch(0.97 0 0); } .ds-btn-outline:focus-visible { outline: none; border-color: oklch(0.708 0 0); box-shadow: 0 0 0 3px oklch(0.708 0 0 / 0.5); }"
+    },
+    {
+      "name": "Tech Tag",
+      "kind": "chip",
+      "refersTo": "badge-secondary",
+      "description": "Project technology tag, rendered as a link to the tool's site.",
+      "html": "<a href=\"#\" class=\"ds-tag\">React Native</a>",
+      "css": ".ds-tag { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border: 1px solid transparent; border-radius: 8px; background: oklch(0.97 0 0); color: oklch(0.205 0 0); font: 500 11px/1 Inter, ui-sans-serif, system-ui, sans-serif; text-decoration: none; transition: background 200ms cubic-bezier(0.4,0,0.2,1); } .ds-tag:hover { background: oklch(0.93 0 0); }"
+    },
+    {
+      "name": "Cinema Tech Tag",
+      "kind": "chip",
+      "refersTo": "badge-secondary",
+      "description": "Domain-accented tag used on a film/cinema featured project (light theme).",
+      "html": "<a href=\"#\" class=\"ds-tag-cinema\">Expo</a>",
+      "css": ".ds-tag-cinema { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border: 1px solid transparent; border-radius: 8px; background: oklch(0.94 0.04 22 / 0.8); color: oklch(0.32 0.14 27); font: 500 11px/1 Inter, ui-sans-serif, system-ui, sans-serif; text-decoration: none; transition: background 200ms; } .ds-tag-cinema:hover { background: oklch(0.94 0.04 22); }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Experience and project container. Flat, hairline-bordered, faint rest shadow.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-title\">Lead Frontend</div><div class=\"ds-card-desc\">Dametis</div><p class=\"ds-card-body\">Construire un SaaS greentech pour réduire l'impact environnemental des entreprises.</p></div>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 24px; padding: 24px; border: 1px solid oklch(0.922 0 0); border-radius: 14px; background: oklch(1 0 0); color: oklch(0.145 0 0); box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); } .ds-card-title { font: 600 16px/1.2 Inter, ui-sans-serif, system-ui, sans-serif; } .ds-card-desc { margin-top: 6px; font: 400 14px/1.4 Inter, ui-sans-serif, system-ui, sans-serif; color: oklch(0.556 0 0); } .ds-card-body { margin: 0; font: 400 15px/1.6 Inter, ui-sans-serif, system-ui, sans-serif; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form field — hairline border, transparent fill, ring on focus.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Votre message…\" />",
+      "css": ".ds-input { width: 100%; height: 36px; padding: 4px 12px; border: 1px solid oklch(0.922 0 0); border-radius: 8px; background: transparent; color: oklch(0.145 0 0); font: 400 14px/1.5 Inter, ui-sans-serif, system-ui, sans-serif; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); outline: none; transition: border-color 200ms, box-shadow 200ms; } .ds-input::placeholder { color: oklch(0.556 0 0); } .ds-input:focus-visible { border-color: oklch(0.708 0 0); box-shadow: 0 0 0 3px oklch(0.708 0 0 / 0.5); }"
+    },
+    {
+      "name": "Timeline Node",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Signature experience rail: a hairline vertical separator with a filled ink dot marking a role.",
+      "html": "<div class=\"ds-timeline\"><span class=\"ds-rail ds-rail-top\"></span><span class=\"ds-dot\"></span><span class=\"ds-rail ds-rail-bottom\"></span></div>",
+      "css": ".ds-timeline { display: flex; flex-direction: column; align-items: center; height: 120px; } .ds-rail { width: 1px; background: oklch(0.922 0 0); } .ds-rail-top { height: 28px; } .ds-rail-bottom { flex: 1; } .ds-dot { width: 8px; height: 8px; border-radius: 9999px; background: oklch(0.205 0 0); margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Senior Engineer's Desk",
+    "overview": "This is the portfolio of a Lead Frontend engineer, and the surface itself is the strongest evidence on it. The system is built on near-monochrome restraint: a clean white page (dark-mode equivalent: near-black), one near-black ink for everything that matters, and color admitted only where it earns its keep. Nothing shouts. The hierarchy is carried by type weight, generous vertical rhythm, and disciplined spacing rather than by decoration. The content does the persuading — a truthful experience timeline, real project screenshots, honest tech stacks — so the chrome stays out of the way. Color appears in exactly two places by design: the per-project accent (cinema red, health green) that tags a featured project to its domain, and the focus ring. Both are functional, never decorative. This system explicitly rejects over-designed/loud aesthetics, cluttered layouts, corporate-SaaS clichés, and the generic shadcn/AI-default look it must consciously rise above.",
+    "keyCharacteristics": [
+      "Near-monochrome neutral base (chroma 0) with two functional domain accents.",
+      "Identical light and dark themes; both must pass WCAG 2.1 AA.",
+      "Hierarchy from type weight and spacing, not borders, shadows, or color.",
+      "Flat-by-default surfaces; elevation is a whisper, never a statement.",
+      "Restraint as the primary signal of seniority."
+    ],
+    "rules": [
+      { "name": "The Earned-Color Rule", "body": "Color is functional, never decorative. The only hues on the page are the two domain accents (each scoped to a single featured project's kicker + tags) and the focus ring. If a color isn't signaling which domain a project belongs to or what has focus, it doesn't belong.", "section": "colors" },
+      { "name": "The Chroma-Zero Rule", "body": "Every neutral is chroma 0 — true grayscale, no warm or cool tint. The warmth of this brand comes from copy and spacing, never from a tinted background.", "section": "colors" },
+      { "name": "The One-Family Rule", "body": "Inter carries the entire interface. Do not introduce a second sans for contrast; if you need contrast, change weight or size. Geist Mono is reserved for code/technical fragments only.", "section": "typography" },
+      { "name": "The Kicker-Is-Not-An-Eyebrow Rule", "body": "The uppercase tracked label is permitted only as a featured project's domain kicker. Never scatter tracked all-caps eyebrows above every section.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat. Depth is tonal (a lighter/darker step) or a hairline border — never a heavy drop shadow. If a card looks like it's floating, the shadow is wrong.", "section": "elevation" },
+      { "name": "The No-Ghost-Card Rule", "body": "Never pair a 1px border with a soft wide drop shadow on the same element. Pick one: the hairline border or a single defined shadow ≤8px — not both.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the page near-monochrome; admit color only as a domain accent (cinema red / health green) or the focus ring.",
+      "Do build hierarchy with Inter's weights (400/500/600) and spacing, not with borders or color.",
+      "Do keep neutrals at chroma 0 — true grayscale, no warm/cool tint.",
+      "Do verify body and muted text clear 4.5:1 (large text 3:1) in both light and dark themes.",
+      "Do keep card radius ≤14px and shadows imperceptible (shadow-xs/shadow-sm).",
+      "Do ship a prefers-reduced-motion alternative for every animation (the ai1/ai2 chat shimmer included).",
+      "Do treat the AI assistant as a first-class, prominent feature."
+    ],
+    "donts": [
+      "Don't go over-designed or loud: no heavy animation pile-ups, no glassmorphism, no gradient text, no background-clip: text.",
+      "Don't clutter: no walls of text, no dense competing layouts.",
+      "Don't reach for corporate-SaaS clichés: no hero-metric blocks, no gradient accents, no endless identical icon-card grids.",
+      "Don't let the surface read as a generic shadcn/AI-default starter.",
+      "Don't scatter uppercase tracked eyebrows above sections; the tracked label is reserved for featured-project kickers only.",
+      "Don't pair a 1px border with a wide soft drop shadow on the same element (ghost-card tell).",
+      "Don't round cards past 14px or introduce a second sans-serif family.",
+      "Don't use color decoratively — if it isn't signaling domain or focus, remove it."
+    ]
+  }
+}
