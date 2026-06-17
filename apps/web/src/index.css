@@ -190,21 +190,37 @@ body {
 }
 
 /*
- * Orchestrated page-load reveal.
- * Content is visible by default (opacity 1); the @starting-style only supplies
- * the entrance origin on first paint, so SSR / no-JS / reduced-motion renders
- * the page fully visible — never gated on a class toggle.
+ * Reveal-on-enter — one mechanism for the whole page.
+ *
+ * SSR-safe contract: content ships visible by default. A blocking inline script
+ * (see layout.tsx) adds `.reveal-enabled` to <html> before first paint, but only
+ * when JS is on AND motion is allowed — so no-JS, reduced-motion and crawlers
+ * always get the fully-rendered page, and on-screen content never flashes.
+ *
+ * IntersectionObserver then adds `.reveal-in` to each [data-reveal] as it enters
+ * the viewport: elements already in view reveal immediately on load (the
+ * entrance cascade, ordered by each element's transition-delay), the rest reveal
+ * as they scroll in. `.reveal-fallback` is a safety net that force-shows
+ * everything if the observer never boots.
  */
 @media (prefers-reduced-motion: no-preference) {
-  .rise {
-    transition:
-      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    @starting-style {
-      opacity: 0;
-      transform: translateY(12px);
-    }
+  .reveal-enabled [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
   }
+  .reveal-enabled [data-reveal].reveal-in {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+/* Safety net: force-show everything if the observer never boots. */
+.reveal-fallback [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* Every shimmer/translate animation has a reduced-motion alternative: stillness. */
@@ -214,8 +230,5 @@ body {
   .animate-ai1-fast,
   .animate-ai2-fast {
     animation: none;
-  }
-  .rise {
-    transition: none;
   }
 }
