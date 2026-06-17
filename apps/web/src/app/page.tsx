@@ -72,7 +72,7 @@ function SectionHeader({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="border-border border-t">
+    <div data-reveal className="border-border border-t">
       <div className="px-5 pt-12 pb-6 sm:px-8 sm:pt-16">
         <div className="flex items-baseline justify-between gap-4">
           <h2 className="display font-medium text-2xl sm:text-3xl">{title}</h2>
@@ -95,7 +95,8 @@ function Hero() {
     <section className="px-5 sm:px-8">
       <div className="max-w-2xl py-16 sm:py-24">
         <p
-          className="meta rise flex items-center gap-2.5 text-muted-foreground text-xs"
+          data-reveal
+          className="meta flex items-center gap-2.5 text-muted-foreground text-xs"
           style={delay(0)}
         >
           <span className="relative flex size-1.5">
@@ -109,19 +110,22 @@ function Hero() {
           <span>Paris, France</span>
         </p>
         <h1
-          className="display rise mt-6 text-balance font-medium text-[clamp(2.25rem,1.5rem+3vw,3.5rem)] leading-[1.05]"
+          data-reveal
+          className="display mt-6 text-balance font-medium text-[clamp(2.25rem,1.5rem+3vw,3.5rem)] leading-[1.05]"
           style={delay(70)}
         >
           {texts.title}
         </h1>
         <p
-          className="rise mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed"
+          data-reveal
+          className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed"
           style={delay(140)}
         >
           {texts.description}
         </p>
         <div
-          className="rise mt-9 flex flex-wrap items-center gap-2.5"
+          data-reveal
+          className="mt-9 flex flex-wrap items-center gap-2.5"
           style={delay(210)}
         >
           <Button asChild>
@@ -157,7 +161,8 @@ function Experience() {
         {experiences.map((experience, index) => (
           <li
             key={`${experience.title}-${experience.startDate}`}
-            className="rise relative pb-10 pl-7 last:pb-0 sm:pl-9"
+            data-reveal
+            className="relative pb-10 pl-7 last:pb-0 sm:pl-9"
             style={delay(Math.min(index * 60, 240))}
           >
             <span
@@ -213,7 +218,7 @@ function FeaturedProjectMedia({
   className?: string;
 }) {
   const imageClassName =
-    "h-auto w-full max-w-full select-none transition-transform duration-500 ease-out group-hover:scale-[1.015]";
+    "h-auto w-full max-w-full select-none transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:group-hover:-translate-y-[5px] motion-safe:group-hover:scale-[1.015] motion-safe:group-hover:will-change-transform";
 
   return (
     <div
@@ -256,7 +261,8 @@ function FeaturedProjectCard({
 
   return (
     <article
-      className="rise group relative border-border border-t"
+      data-reveal
+      className="group relative border-border border-t"
       style={style}
     >
       <div className="grid gap-8 px-5 py-12 sm:px-8 lg:min-h-[360px] lg:grid-cols-2 lg:items-center lg:gap-14">
@@ -292,7 +298,9 @@ function FeaturedProjectCard({
               <Link target="_blank" rel="noopener noreferrer" href={href}>
                 {project.appStore && <Apple />}
                 <span>{project.featured.ctaLabel}</span>
-                {!project.appStore && <ArrowUpRight className="size-4" />}
+                {!project.appStore && (
+                  <ArrowUpRight className="size-4 transition-transform duration-300 ease-out motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5" />
+                )}
               </Link>
             </Button>
           )}
@@ -318,7 +326,8 @@ function ProjectCell({
 }) {
   return (
     <li
-      className="rise group relative flex flex-col gap-4 border-border border-b px-5 py-6 transition-colors duration-300 hover:bg-accent/40 sm:px-8 sm:odd:border-r"
+      data-reveal
+      className="group relative flex flex-col gap-4 border-border border-b px-5 py-6 transition-colors duration-300 hover:bg-accent/40 sm:px-8 sm:odd:border-r"
       style={style}
     >
       <div className="flex items-start justify-between gap-3">

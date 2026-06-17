@@ -101,9 +101,9 @@ export function Chat() {
               onClick={submit}
               disabled={!canSend}
               aria-label="Envoyer le message"
-              className="pointer-events-auto absolute top-1/2 right-2 flex size-8 -translate-y-1/2 items-center justify-center rounded-md bg-primary text-primary-foreground outline-none transition-all hover:bg-primary/90 focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-30"
+              className="group pointer-events-auto absolute top-1/2 right-2 flex size-8 -translate-y-1/2 items-center justify-center rounded-md bg-primary text-primary-foreground outline-none transition-all duration-150 ease-out hover:bg-primary/90 focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-30 disabled:active:scale-100 motion-safe:active:scale-90"
             >
-              <ArrowUp className="size-4" />
+              <ArrowUp className="size-4 transition-transform duration-200 ease-out motion-safe:group-hover:-translate-y-0.5" />
             </button>
           </div>
         </div>

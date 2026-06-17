@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../index.css";
-import Link from "next/link";
 import { Chat } from "@/components/chat";
-import { GitHub } from "@/components/github";
-import { LinkedIn } from "@/components/linkedin";
-import { ModeToggle } from "@/components/mode-toggle";
 import Providers from "@/components/providers";
-import { Button } from "@/components/ui/button";
-import { links } from "@/lib/links";
+import { ScrollReveal } from "@/components/scroll-reveal";
+import { SiteHeader } from "@/components/site-header";
 import { texts } from "@/lib/texts";
 
 const geistSans = Geist({
@@ -32,6 +28,12 @@ export const metadata: Metadata = {
   },
 };
 
+// Runs before first paint: arms reveal-on-enter only when JS is on and motion is
+// allowed, so no-JS / reduced-motion / crawlers get the page fully visible and
+// on-screen content never flashes. The fallback force-shows everything if the
+// observer never boots. See scroll-reveal.tsx / index.css.
+const revealInitScript = `(function(){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var r=document.documentElement;r.classList.add('reveal-enabled');window.__revealFallback=setTimeout(function(){r.classList.add('reveal-fallback')},3000);}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -42,48 +44,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: static, pre-paint reveal bootstrap */}
+        <script dangerouslySetInnerHTML={{ __html: revealInitScript }} />
         <Providers>
           <div className="relative mx-auto min-h-svh w-full max-w-[68rem] border-border sm:border-x">
-            <header className="sticky top-0 z-40 border-border/80 border-b bg-background/70 backdrop-blur-md backdrop-saturate-150">
-              <div className="flex items-center justify-between px-5 py-3.5 sm:px-8">
-                <Link
-                  href="/"
-                  className="group flex items-baseline gap-2.5 rounded-sm outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
-                >
-                  <span className="font-medium text-[0.9375rem] tracking-tight">
-                    Florent Klein
-                  </span>
-                  <span className="meta hidden text-[0.6875rem] text-muted-foreground sm:inline">
-                    Lead Frontend
-                  </span>
-                </Link>
-                <nav className="flex items-center gap-0.5">
-                  <Button variant="ghost" size="icon" asChild>
-                    <Link
-                      href={links.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="LinkedIn"
-                    >
-                      <LinkedIn />
-                    </Link>
-                  </Button>
-                  <Button variant="ghost" size="icon" asChild>
-                    <Link
-                      href={links.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="GitHub"
-                    >
-                      <GitHub />
-                    </Link>
-                  </Button>
-                  <ModeToggle />
-                </nav>
-              </div>
-            </header>
+            <SiteHeader />
             {children}
           </div>
+          <ScrollReveal />
           <Chat />
         </Providers>
       </body>
