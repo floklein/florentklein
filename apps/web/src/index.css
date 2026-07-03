@@ -9,29 +9,6 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-mono:
     var(--font-geist-mono), ui-monospace, "SFMono-Regular", "Menlo", monospace;
-  --animate-ai1: ai1 8s ease-in-out infinite;
-  --animate-ai2: ai2 8s ease-in-out infinite;
-  --animate-ai1-fast: ai1 1s ease-in-out infinite;
-  --animate-ai2-fast: ai2 1s ease-in-out infinite;
-
-  @keyframes ai1 {
-    0%,
-    100% {
-      transform: translateX(-15%);
-    }
-    50% {
-      transform: translateX(15%);
-    }
-  }
-  @keyframes ai2 {
-    0%,
-    100% {
-      transform: translateX(15%);
-    }
-    50% {
-      transform: translateX(-15%);
-    }
-  }
 }
 
 html,
@@ -223,12 +200,23 @@ body {
   transform: none !important;
 }
 
+/* border-beam: registering --beam-strength lets the idle (0.2) to
+   thinking (1) jump interpolate instead of snapping. */
+@property --beam-strength {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+[data-beam] {
+  transition: --beam-strength 500ms ease;
+}
+
 /* Every shimmer/translate animation has a reduced-motion alternative: stillness. */
 @media (prefers-reduced-motion: reduce) {
-  .animate-ai1,
-  .animate-ai2,
-  .animate-ai1-fast,
-  .animate-ai2-fast {
+  [data-beam]::before,
+  [data-beam]::after,
+  [data-beam] [data-beam-bloom] {
     animation: none;
   }
 }

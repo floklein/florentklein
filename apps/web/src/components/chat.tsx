@@ -1,11 +1,11 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
+import { BorderBeam } from "border-beam";
 import { ArrowUp } from "lucide-react";
 import { AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
 import { Message } from "./message";
 
 export function Chat() {
@@ -70,21 +70,12 @@ export function Chat() {
               </AnimatePresence>
             </div>
           )}
-          <div className="relative">
-            <div
-              className={cn(
-                "absolute -inset-10 bg-radial from-indigo-400/70 via-transparent to-transparent opacity-40 transition-opacity duration-500",
-                isFocused && "opacity-100",
-                isBusy ? "animate-ai1-fast" : "animate-ai1",
-              )}
-            />
-            <div
-              className={cn(
-                "absolute -inset-10 bg-radial from-pink-400/70 via-transparent to-transparent opacity-40 transition-opacity duration-500",
-                isFocused && "opacity-100",
-                isBusy ? "animate-ai2-fast" : "animate-ai2",
-              )}
-            />
+          <BorderBeam
+            className="relative"
+            theme="auto"
+            colorVariant={isBusy ? "colorful" : "mono"}
+            strength={isBusy ? 1 : 0.5}
+          >
             <Input
               className="pointer-events-auto relative h-12 w-full rounded-lg bg-background pr-12 pl-4 text-base shadow-sm md:text-base dark:bg-accent"
               placeholder="Posez une question à mon assistant…"
@@ -105,7 +96,7 @@ export function Chat() {
             >
               <ArrowUp className="size-4 transition-transform duration-200 ease-out motion-safe:group-hover:-translate-y-0.5" />
             </button>
-          </div>
+          </BorderBeam>
         </div>
       </div>
     </div>
