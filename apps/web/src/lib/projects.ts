@@ -1,12 +1,14 @@
 type ProjectTag = [name: string, url: string];
 
+export type FeaturedTone = "cinema" | "health" | "food";
+
 export type FeaturedProject = {
   kicker: string;
   lightImage: string;
   darkImage: string;
   imageAlt: string;
   imagePosition: "left" | "right";
-  tone: "cinema" | "health";
+  tone: FeaturedTone;
   ctaLabel: string;
 };
 
@@ -18,6 +20,60 @@ export type Project = {
   github?: string;
   featured?: FeaturedProject;
   tags: ProjectTag[];
+};
+
+export type FeaturedDuo = {
+  name: string;
+  description: string;
+  kicker: string;
+  lightImage: string;
+  darkImage: string;
+  imageAlt: string;
+  imagePosition: "left" | "right";
+  tone: FeaturedTone;
+  apps: { name: string; appStore: string }[];
+  tags: ProjectTag[];
+};
+
+export const featuredDuo: FeaturedDuo = {
+  name: "Nooli & Hungi",
+  description:
+    "Deux apps pour les personnes vivant avec l'anorexie : Nooli, compagnon émotionnel pour les moments difficiles, et Hungi, IA qui transforme votre frigo et votre humeur en recettes à cuisiner.",
+  kicker: "Apps iOS",
+  lightImage: "/nooli-hungi-light.png",
+  darkImage: "/nooli-hungi-dark.png",
+  imageAlt: "Écrans iPhone de Nooli et Hungi",
+  imagePosition: "left",
+  tone: "food",
+  apps: [
+    {
+      name: "Nooli",
+      appStore:
+        "https://apps.apple.com/fr/app/nooli-compagnon-anorexie/id6784231162",
+    },
+    {
+      name: "Hungi",
+      appStore: "https://apps.apple.com/fr/app/hungi/id6780053204",
+    },
+  ],
+  tags: [
+    ["React Native", "https://reactnative.dev/"],
+    ["Expo", "https://expo.dev/"],
+    ["Uniwind", "https://uniwind.dev/"],
+    ["Reanimated", "https://docs.swmansion.com/react-native-reanimated/"],
+    ["Skia", "https://shopify.github.io/react-native-skia/"],
+    ["AI SDK", "https://ai-sdk.dev/"],
+    ["GPT-5.5", "https://openai.com/api/"],
+    ["Spoonacular", "https://spoonacular.com/food-api"],
+    ["TanStack Query", "https://tanstack.com/query"],
+    ["BetterAuth", "https://www.better-auth.com/"],
+    ["Drizzle", "https://orm.drizzle.team/"],
+    ["PostgreSQL", "https://www.postgresql.org/"],
+    ["Zod", "https://zod.dev/"],
+    ["Express", "https://expressjs.com/"],
+    ["Sentry", "https://sentry.io/"],
+    ["PostHog", "https://posthog.com/"],
+  ],
 };
 
 export const projects: Project[] = [

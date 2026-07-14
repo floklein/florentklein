@@ -8,22 +8,31 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { experiences } from "@/lib/experiences";
 import { links } from "@/lib/links";
-import { type FeaturedProject, type Project, projects } from "@/lib/projects";
+import {
+  type FeaturedDuo,
+  type FeaturedProject,
+  type FeaturedTone,
+  featuredDuo,
+  type Project,
+  projects,
+} from "@/lib/projects";
 import { texts } from "@/lib/texts";
 import { cn } from "@/lib/utils";
 
 type FeaturedProjectItem = Project & { featured: FeaturedProject };
 
-const featuredKickerClasses: Record<FeaturedProject["tone"], string> = {
+const featuredKickerClasses: Record<FeaturedTone, string> = {
   cinema: "text-red-700 dark:text-red-300",
   health: "text-emerald-700 dark:text-emerald-300",
+  food: "text-amber-700 dark:text-amber-300",
 };
 
-const featuredTagClasses: Record<FeaturedProject["tone"], string> = {
+const featuredTagClasses: Record<FeaturedTone, string> = {
   cinema:
     "border-transparent bg-red-100/80 text-red-950 [a&]:hover:bg-red-100 dark:bg-red-950/70 dark:text-red-100 dark:[a&]:hover:bg-red-950",
   health:
     "border-transparent bg-emerald-100/80 text-emerald-950 [a&]:hover:bg-emerald-100 dark:bg-emerald-950/70 dark:text-emerald-100 dark:[a&]:hover:bg-emerald-950",
+  food: "border-transparent bg-amber-100/80 text-amber-950 [a&]:hover:bg-amber-100 dark:bg-amber-950/70 dark:text-amber-100 dark:[a&]:hover:bg-amber-950",
 };
 
 function delay(ms: number): CSSProperties {
@@ -38,7 +47,15 @@ function getProjectHref(project: Project) {
   return project.appStore ?? project.url ?? project.github;
 }
 
-function ProjectTags({ project }: { project: Project }) {
+function ProjectTags({
+  project,
+  tone,
+}: {
+  project: Project;
+  tone?: FeaturedTone;
+}) {
+  const projectTone = tone ?? project.featured?.tone;
+
   return (
     <>
       {project.tags.map(([tagName, tagUrl]) => (
@@ -47,8 +64,8 @@ function ProjectTags({ project }: { project: Project }) {
           variant="secondary"
           className={cn(
             "meta h-[1.375rem] rounded-md px-2 text-[0.6875rem] leading-none tracking-tight",
-            project.featured
-              ? featuredTagClasses[project.featured.tone]
+            projectTone
+              ? featuredTagClasses[projectTone]
               : "border-border bg-transparent text-muted-foreground [a&]:hover:border-foreground/25 [a&]:hover:bg-accent [a&]:hover:text-foreground",
           )}
           asChild
@@ -213,7 +230,10 @@ function FeaturedProjectMedia({
   projectName,
   className,
 }: {
-  featured: FeaturedProject;
+  featured: Pick<
+    FeaturedProject,
+    "lightImage" | "darkImage" | "imageAlt" | "imagePosition"
+  >;
   projectName: string;
   className?: string;
 }) {
@@ -317,6 +337,75 @@ function FeaturedProjectCard({
   );
 }
 
+function FeaturedDuoCard({
+  duo,
+  style,
+}: {
+  duo: FeaturedDuo;
+  style?: CSSProperties;
+}) {
+  return (
+    <article
+      data-reveal
+      className="group relative border-border border-t"
+      style={style}
+    >
+      <div className="grid gap-8 px-5 py-12 sm:px-8 lg:min-h-[360px] lg:grid-cols-2 lg:items-center lg:gap-14">
+        <div
+          className={cn(
+            "max-w-lg space-y-5",
+            duo.imagePosition === "left" ? "lg:order-2" : "lg:ml-auto",
+          )}
+        >
+          <div className="space-y-3">
+            <p
+              className={cn(
+                "font-semibold text-[0.6875rem] uppercase leading-none tracking-[0.18em]",
+                featuredKickerClasses[duo.tone],
+              )}
+            >
+              {duo.kicker}
+            </p>
+            <h3 className="display font-semibold text-4xl sm:text-5xl">
+              {duo.name}
+            </h3>
+            <p className="max-w-md text-base text-muted-foreground leading-relaxed">
+              {duo.description}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            <ProjectTags project={duo} tone={duo.tone} />
+          </div>
+          <div className="mt-2 flex flex-wrap items-center gap-2.5">
+            {duo.apps.map((app, index) => (
+              <Button
+                key={app.name}
+                variant={index === 0 ? "default" : "outline"}
+                className="gap-2"
+                asChild
+              >
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={app.appStore}
+                >
+                  <Apple />
+                  <span>{app.name} sur l'App Store</span>
+                </Link>
+              </Button>
+            ))}
+          </div>
+        </div>
+        <FeaturedProjectMedia
+          featured={duo}
+          projectName={duo.name}
+          className={cn(duo.imagePosition === "left" && "lg:order-1")}
+        />
+      </div>
+    </article>
+  );
+}
+
 function ProjectCell({
   project,
   style,
@@ -386,6 +475,7 @@ function ProjectCell({
 export default function Home() {
   const featuredProjects = projects.filter(hasFeaturedProject);
   const regularProjects = projects.filter((project) => !project.featured);
+  const projectCount = projects.length + featuredDuo.apps.length;
 
   return (
     <main>
@@ -394,7 +484,7 @@ export default function Home() {
       <SectionHeader title="Expérience" meta="2019 — Aujourd'hui" />
       <Experience />
 
-      <SectionHeader title="Projets" meta={`${projects.length} projets`}>
+      <SectionHeader title="Projets" meta={`${projectCount} projets`}>
         Une sélection de projets personnels réalisés avec React et TypeScript,
         et auto-déployés avec Coolify.
       </SectionHeader>
@@ -406,6 +496,10 @@ export default function Home() {
             style={delay(index * 80)}
           />
         ))}
+        <FeaturedDuoCard
+          duo={featuredDuo}
+          style={delay(featuredProjects.length * 80)}
+        />
         <ul className="grid grid-cols-1 border-border border-t sm:grid-cols-2">
           {regularProjects.map((project, index) => (
             <ProjectCell
