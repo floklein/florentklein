@@ -228,22 +228,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Le jeu du Dico",
-    description:
-      "Jeu multijoueur où vous piégez vos amis en inventant des définitions de mots difficiles.",
-    github: "https://github.com/floklein/dico",
-    url: "https://dico.florentklein.dev/",
-    tags: [
-      ["Next.js", "https://nextjs.org/"],
-      ["AI SDK", "https://ai-sdk.dev/"],
-      ["GPT-5.2", "https://openai.com/api/"],
-      ["Tailwind", "https://tailwindcss.com/"],
-      ["Shadcn", "https://ui.shadcn.com/"],
-      ["Vitest", "https://vitest.dev/"],
-      ["Codex", "https://openai.com/codex/"],
-    ],
-  },
-  {
     name: "florentklein.dev",
     description: "Ce portfolio, avec son assistant IA.",
     github: "https://github.com/floklein/florentklein",
