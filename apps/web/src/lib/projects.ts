@@ -151,7 +151,6 @@ export const projects: Project[] = [
     name: "Terra TCG",
     description:
       "Jeu mobile de cartes à collectionner où vous capturez des animaux en les photographiant.",
-    github: "https://github.com/floklein/terra",
     tags: [
       ["React Native", "https://reactnative.dev/"],
       ["Expo", "https://expo.dev/"],
