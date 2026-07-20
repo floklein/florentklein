@@ -1,47 +1,61 @@
 # florentklein
 
-This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines Next.js, and more.
+Personal portfolio of Florent Klein — React developer and Lead Frontend at Dametis. A single-page site showcasing experience and selected projects, with an AI chat assistant that answers questions about Florent using the site's own data as context.
 
-## Features
+## Tech stack
 
-- **TypeScript** - For type safety and improved developer experience
-- **Next.js** - Full-stack React framework
-- **TailwindCSS** - Utility-first CSS for rapid UI development
-- **shadcn/ui** - Reusable UI components
-- **Turborepo** - Optimized monorepo build system
-- **Biome** - Linting and formatting
+- **Next.js 16** (App Router, Turbopack) with **React 19**
+- **TypeScript**
+- **Tailwind CSS 4** + **shadcn/ui** (Radix UI) for the UI
+- **Motion** for reveal-on-enter animations and interaction feedback
+- **AI SDK** (`ai` + `@ai-sdk/openai`) powering the chat assistant at `/api/chat`
+- **TanStack Query & Form**, **next-themes** (dark mode), **sonner** (toasts)
+- **Turborepo** monorepo, **Bun** package manager
+- **Biome** for formatting and linting
 
-## Getting Started
+## Getting started
 
-First, install the dependencies:
+Install the dependencies:
 
 ```bash
 bun install
 ```
 
+Set up environment variables for the web app:
 
-Then, run the development server:
+```bash
+cp apps/web/.env.example apps/web/.env
+```
+
+- `OPENAI_API_KEY` — required for the AI chat assistant
+- `NEXT_PUBLIC_SERVER_URL` — public URL of the app
+
+Then run the development server:
 
 ```bash
 bun dev
 ```
 
-Open [http://localhost:3001](http://localhost:3001) in your browser to see the web application.
+Open [http://localhost:3001](http://localhost:3001) in your browser.
 
-
-
-## Project Structure
+## Project structure
 
 ```
 florentklein/
 ├── apps/
-│   ├── web/         # Frontend application (Next.js)
+│   └── web/                    # Next.js app
+│       └── src/
+│           ├── app/            # App Router pages, API routes, SEO (sitemap, robots, OG images)
+│           │   └── api/chat/   # AI chat endpoint (streaming)
+│           ├── components/     # Site components (chat, header, scroll reveal, ...)
+│           │   └── ui/         # shadcn/ui primitives
+│           └── lib/            # Data (experiences, projects, links, texts) and utils
 ```
 
-## Available Scripts
+## Available scripts
 
 - `bun dev`: Start all applications in development mode
-- `bun build`: Build all applications
 - `bun dev:web`: Start only the web application
+- `bun build`: Build all applications
 - `bun check-types`: Check TypeScript types across all apps
 - `bun check`: Run Biome formatting and linting
