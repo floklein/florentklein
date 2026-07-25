@@ -18,6 +18,11 @@ export type Project = {
   url?: string;
   appStore?: string;
   github?: string;
+  entries?: {
+    name: string;
+    url: string;
+    github?: string;
+  }[];
   featured?: FeaturedProject;
   tags: ProjectTag[];
 };
@@ -180,34 +185,33 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "great minds",
+    name: "Great Minds & Artguessr",
     description:
-      "Jeu en temps réel pour tester votre complicité avec vos amis sur des thèmes variés.",
-    url: "https://greatminds.florentklein.dev/",
-    github: "https://github.com/floklein/greatminds",
+      "Deux jeux web : Great Minds teste votre complicité entre amis en temps réel, Artguessr votre intuition sur la date des œuvres d'art.",
+    entries: [
+      {
+        name: "Great Minds",
+        url: "https://greatminds.florentklein.dev/",
+        github: "https://github.com/floklein/greatminds",
+      },
+      {
+        name: "Artguessr",
+        url: "https://artguessr.florentklein.dev/",
+        github: "https://github.com/floklein/artguessr",
+      },
+    ],
     tags: [
       ["Vite", "https://vite.dev/"],
+      ["Next.js", "https://nextjs.org/"],
+      ["Tailwind", "https://tailwindcss.com/"],
       [
         "WebSocket",
         "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
       ],
-      ["Ant Design", "https://ant.design/"],
       ["Colyseus", "https://www.colyseus.io/"],
       ["Motion", "https://motion.dev/"],
       ["TanStack Query", "https://tanstack.com/query"],
       ["Zustand", "https://zustand.docs.pmnd.rs/"],
-      ["Turborepo", "https://turborepo.com/"],
-    ],
-  },
-  {
-    name: "Artguessr",
-    description: "Jeu éducatif consistant à deviner la date d'une œuvre d'art.",
-    github: "https://github.com/floklein/artguessr",
-    url: "https://artguessr.florentklein.dev/",
-    tags: [
-      ["Next.js", "https://nextjs.org/"],
-      ["Tailwind", "https://tailwindcss.com/"],
-      ["Shadcn", "https://ui.shadcn.com/"],
       ["Zod", "https://zod.dev/"],
     ],
   },

@@ -427,7 +427,7 @@ function ProjectCell({
           </p>
         </div>
         <div className="-mt-1.5 -mr-1.5 flex shrink-0 items-center">
-          {project.github && (
+          {!project.entries && project.github && (
             <Button variant="ghost" size="icon" className="size-8" asChild>
               <Link
                 target="_blank"
@@ -439,7 +439,7 @@ function ProjectCell({
               </Link>
             </Button>
           )}
-          {project.appStore && (
+          {!project.entries && project.appStore && (
             <Button variant="ghost" size="icon" className="size-8" asChild>
               <Link
                 target="_blank"
@@ -451,7 +451,7 @@ function ProjectCell({
               </Link>
             </Button>
           )}
-          {project.url && (
+          {!project.entries && project.url && (
             <Button variant="ghost" size="icon" className="size-8" asChild>
               <Link
                 target="_blank"
@@ -465,6 +465,40 @@ function ProjectCell({
           )}
         </div>
       </div>
+      {project.entries && (
+        <div className="flex flex-wrap gap-x-4 gap-y-2">
+          {project.entries.map((entry) => (
+            <div key={entry.name} className="flex items-center gap-0.5">
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                href={entry.url}
+                className="inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 transition-colors hover:text-muted-foreground hover:underline"
+              >
+                {entry.name}
+                <ExternalLink className="size-3.5" />
+              </Link>
+              {entry.github && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="size-7"
+                  asChild
+                >
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={entry.github}
+                    aria-label={`${entry.name} sur GitHub`}
+                  >
+                    <GitHub />
+                  </Link>
+                </Button>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
       <div className="mt-auto flex flex-wrap gap-1.5">
         <ProjectTags project={project} />
       </div>
@@ -475,7 +509,11 @@ function ProjectCell({
 export default function Home() {
   const featuredProjects = projects.filter(hasFeaturedProject);
   const regularProjects = projects.filter((project) => !project.featured);
-  const projectCount = projects.length + featuredDuo.apps.length;
+  const projectCount =
+    projects.reduce(
+      (count, project) => count + (project.entries?.length ?? 1),
+      0,
+    ) + featuredDuo.apps.length;
 
   return (
     <main>
