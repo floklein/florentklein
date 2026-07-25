@@ -390,7 +390,7 @@ function FeaturedDuoCard({
                   href={app.appStore}
                 >
                   <Apple />
-                  <span>{app.name} sur l'App Store</span>
+                  <span>{app.name} sur l’App Store</span>
                 </Link>
               </Button>
             ))}
