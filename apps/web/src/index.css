@@ -200,7 +200,7 @@ body {
   transform: none !important;
 }
 
-/* border-beam: registering --beam-strength lets the idle (0.2) to
+/* border-beam: registering --beam-strength lets the idle (0.75) to
    thinking (1) jump interpolate instead of snapping. */
 @property --beam-strength {
   syntax: "<number>";

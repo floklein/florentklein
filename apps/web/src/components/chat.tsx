@@ -74,7 +74,7 @@ export function Chat() {
             className="relative"
             theme="auto"
             colorVariant={isBusy ? "colorful" : "mono"}
-            strength={isBusy ? 1 : 0.5}
+            strength={isBusy ? 1 : 0.75}
           >
             <Input
               className="pointer-events-auto relative h-12 w-full rounded-lg bg-background pr-12 pl-4 text-base shadow-sm md:text-base dark:bg-accent"
