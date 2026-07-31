@@ -6,6 +6,12 @@ import { Apple } from "@/components/apple";
 import { GitHub } from "@/components/github";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { experiences } from "@/lib/experiences";
 import { links } from "@/lib/links";
 import {
@@ -427,6 +433,63 @@ function ProjectCell({
           </p>
         </div>
         <div className="-mt-1.5 -mr-1.5 flex shrink-0 items-center">
+          {project.entries && (
+            <>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="size-8"
+                    aria-label={`${project.name} sur GitHub`}
+                  >
+                    <GitHub />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {project.entries.map(
+                    (entry) =>
+                      entry.github && (
+                        <DropdownMenuItem key={entry.name} asChild>
+                          <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={entry.github}
+                          >
+                            {entry.name}
+                          </Link>
+                        </DropdownMenuItem>
+                      ),
+                  )}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="size-8"
+                    aria-label={`Visiter ${project.name}`}
+                  >
+                    <ExternalLink className="size-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {project.entries.map((entry) => (
+                    <DropdownMenuItem key={entry.name} asChild>
+                      <Link
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={entry.url}
+                      >
+                        {entry.name}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </>
+          )}
           {!project.entries && project.github && (
             <Button variant="ghost" size="icon" className="size-8" asChild>
               <Link
@@ -465,40 +528,6 @@ function ProjectCell({
           )}
         </div>
       </div>
-      {project.entries && (
-        <div className="flex flex-wrap gap-x-4 gap-y-2">
-          {project.entries.map((entry) => (
-            <div key={entry.name} className="flex items-center gap-0.5">
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href={entry.url}
-                className="inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 transition-colors hover:text-muted-foreground hover:underline"
-              >
-                {entry.name}
-                <ExternalLink className="size-3.5" />
-              </Link>
-              {entry.github && (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="size-7"
-                  asChild
-                >
-                  <Link
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={entry.github}
-                    aria-label={`${entry.name} sur GitHub`}
-                  >
-                    <GitHub />
-                  </Link>
-                </Button>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
       <div className="mt-auto flex flex-wrap gap-1.5">
         <ProjectTags project={project} />
       </div>
