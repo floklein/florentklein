@@ -216,18 +216,31 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "K3 Chat",
-    description: "Chat IA multi-modal avec choix du modèle.",
-    github: "https://github.com/floklein/k3chat",
-    url: "https://cloneathon.t3.chat/",
+    name: "NatUI & git-agents",
+    description:
+      "Deux outils open source : un framework pour créer des apps desktop natives avec React, et une CLI qui synchronise vos skills et instructions IA via git.",
+    entries: [
+      {
+        name: "NatUI",
+        url: "https://natui.dev/",
+        github: "https://github.com/floklein/natui",
+      },
+      {
+        name: "git-agents",
+        url: "https://www.npmjs.com/package/git-agents",
+        github: "https://github.com/floklein/git-agents",
+      },
+    ],
     tags: [
-      ["Next.js", "https://nextjs.org/"],
-      ["Convex", "https://www.convex.dev/"],
-      ["Gemini", "https://deepmind.google/models/gemini/"],
-      ["Claude", "https://www.anthropic.com/claude"],
-      ["GPT", "https://openai.com/chatgpt/"],
-      ["Tailwind", "https://tailwindcss.com/"],
-      ["Shadcn", "https://ui.shadcn.com/"],
+      ["TypeScript", "https://www.typescriptlang.org/"],
+      ["React", "https://react.dev/"],
+      ["SwiftUI", "https://developer.apple.com/xcode/swiftui/"],
+      ["WinUI 3", "https://learn.microsoft.com/en-us/windows/apps/winui/"],
+      ["Claude Code", "https://www.anthropic.com/claude-code"],
+      ["Codex", "https://openai.com/codex/"],
+      ["Cursor", "https://cursor.com/"],
+      ["Gemini CLI", "https://github.com/google-gemini/gemini-cli"],
+      ["OpenCode", "https://opencode.ai/"],
     ],
   },
   {

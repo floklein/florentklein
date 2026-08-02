@@ -34,6 +34,16 @@ ${projects.map(
   - Stack : ${project.tags.map(([tagName]) => tagName).join(", ")}
   ${project.url ? `- URL : ${project.url}` : ""}
   ${project.github ? `- GitHub : ${project.github}` : ""}
+  ${
+    project.entries
+      ?.map(
+        (entry) => `
+  ### ${entry.name}
+  - URL : ${entry.url}
+  ${entry.github ? `- GitHub : ${entry.github}` : ""}`,
+      )
+      .join("") ?? ""
+  }
   `,
 )}
 
