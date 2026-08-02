@@ -10,7 +10,7 @@ Personal portfolio of Florent Klein — React developer and Lead Frontend at Dam
 - **Motion** for reveal-on-enter animations and interaction feedback
 - **AI SDK** (`ai` + `@ai-sdk/openai`) powering the chat assistant at `/api/chat`
 - **TanStack Query & Form**, **next-themes** (dark mode), **sonner** (toasts)
-- **Turborepo** monorepo, **Bun** package manager
+- **Bun** package manager
 - **Biome** for formatting and linting
 
 ## Getting started
@@ -21,10 +21,10 @@ Install the dependencies:
 bun install
 ```
 
-Set up environment variables for the web app:
+Set up environment variables:
 
 ```bash
-cp apps/web/.env.example apps/web/.env
+cp .env.example .env
 ```
 
 - `OPENAI_API_KEY` — required for the AI chat assistant
@@ -42,20 +42,17 @@ Open [http://localhost:3001](http://localhost:3001) in your browser.
 
 ```
 florentklein/
-├── apps/
-│   └── web/                    # Next.js app
-│       └── src/
-│           ├── app/            # App Router pages, API routes, SEO (sitemap, robots, OG images)
-│           │   └── api/chat/   # AI chat endpoint (streaming)
-│           ├── components/     # Site components (chat, header, scroll reveal, ...)
-│           │   └── ui/         # shadcn/ui primitives
-│           └── lib/            # Data (experiences, projects, links, texts) and utils
+└── src/
+    ├── app/            # App Router pages, API routes, SEO (sitemap, robots, OG images)
+    │   └── api/chat/   # AI chat endpoint (streaming)
+    ├── components/     # Site components (chat, header, scroll reveal, ...)
+    │   └── ui/         # shadcn/ui primitives
+    └── lib/            # Data (experiences, projects, links, texts) and utils
 ```
 
 ## Available scripts
 
-- `bun dev`: Start all applications in development mode
-- `bun dev:web`: Start only the web application
-- `bun build`: Build all applications
-- `bun check-types`: Check TypeScript types across all apps
+- `bun dev`: Start the development server
+- `bun run build`: Build the app
+- `bun check-types`: Check TypeScript types
 - `bun check`: Run Biome formatting and linting

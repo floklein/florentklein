@@ -5,7 +5,6 @@
       "name": "web",
       "runtimeExecutable": "bun",
       "runtimeArgs": ["run", "dev"],
-      "cwd": "apps/web",
       "port": 3001
     }
   ]
