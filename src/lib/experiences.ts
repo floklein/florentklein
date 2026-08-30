@@ -5,7 +5,7 @@ export const experiences = [
     title: "Lead Frontend",
     description: [
       "Management d'une équipe de 6 développeurs",
-      "Prises de décisions techniques majeures",
+      "Prises de décision techniques majeures",
       "Recrutement et formation de stagiaires et de juniors",
       "Mise en place du processus QA : suite de tests automatisés et manuels, organisation du processus de livraison",
       "Amélioration du processus DX : gestion de la dette technique, organisation de grandes migrations",
