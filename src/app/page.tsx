@@ -29,15 +29,17 @@ type FeaturedProjectItem = Project & { featured: FeaturedProject };
 
 const featuredKickerClasses: Record<FeaturedTone, string> = {
   cinema: "text-red-700 dark:text-red-300",
-  health: "text-emerald-700 dark:text-emerald-300",
+  disk: "text-[#2f6b4f] dark:text-[#6fc79a]",
+  health: "text-sky-700 dark:text-sky-300",
   food: "text-amber-700 dark:text-amber-300",
 };
 
 const featuredTagClasses: Record<FeaturedTone, string> = {
   cinema:
     "border-transparent bg-red-100/80 text-red-950 [a&]:hover:bg-red-100 dark:bg-red-950/70 dark:text-red-100 dark:[a&]:hover:bg-red-950",
+  disk: "border-transparent bg-[#e3f1e9]/80 text-[#003921] [a&]:hover:bg-[#e3f1e9] dark:bg-[#023521]/70 dark:text-[#c9e6d5] dark:[a&]:hover:bg-[#023521]",
   health:
-    "border-transparent bg-emerald-100/80 text-emerald-950 [a&]:hover:bg-emerald-100 dark:bg-emerald-950/70 dark:text-emerald-100 dark:[a&]:hover:bg-emerald-950",
+    "border-transparent bg-sky-100/80 text-sky-950 [a&]:hover:bg-sky-100 dark:bg-sky-950/70 dark:text-sky-100 dark:[a&]:hover:bg-sky-950",
   food: "border-transparent bg-amber-100/80 text-amber-950 [a&]:hover:bg-amber-100 dark:bg-amber-950/70 dark:text-amber-100 dark:[a&]:hover:bg-amber-950",
 };
 
@@ -320,15 +322,29 @@ function FeaturedProjectCard({
             <ProjectTags project={project} />
           </div>
           {href && (
-            <Button className="mt-2 gap-2" asChild>
-              <Link target="_blank" rel="noopener noreferrer" href={href}>
-                {project.appStore && <Apple />}
-                <span>{project.featured.ctaLabel}</span>
-                {!project.appStore && (
-                  <ArrowUpRight className="size-4 transition-transform duration-300 ease-out motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5" />
-                )}
-              </Link>
-            </Button>
+            <div className="mt-2 flex flex-wrap items-center gap-2.5">
+              <Button className="gap-2" asChild>
+                <Link target="_blank" rel="noopener noreferrer" href={href}>
+                  {project.appStore && <Apple />}
+                  <span>{project.featured.ctaLabel}</span>
+                  {!project.appStore && (
+                    <ArrowUpRight className="size-4 transition-transform duration-300 ease-out motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5" />
+                  )}
+                </Link>
+              </Button>
+              {project.appStore && project.url && (
+                <Button variant="outline" className="gap-2" asChild>
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={project.url}
+                  >
+                    <span>Visiter le site</span>
+                    <ArrowUpRight className="size-4 transition-transform duration-300 ease-out motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5" />
+                  </Link>
+                </Button>
+              )}
+            </div>
           )}
         </div>
         <FeaturedProjectMedia

@@ -70,11 +70,17 @@ export function Chat() {
               </AnimatePresence>
             </div>
           )}
+          {/*
+           * borderRadius must match the input's `rounded-lg` (--radius, 8px).
+           * Without it BorderBeam paints its size default (16px) until an effect
+           * measures the child, which flashes a near-pill border on load.
+           */}
           <BorderBeam
             className="relative"
             theme="auto"
             colorVariant={isBusy ? "colorful" : "mono"}
             strength={isBusy ? 1 : 0.75}
+            borderRadius={8}
           >
             <Input
               className="pointer-events-auto relative h-12 w-full rounded-lg bg-background pr-12 pl-4 text-base shadow-sm md:text-base dark:bg-accent"

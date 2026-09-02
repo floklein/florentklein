@@ -1,6 +1,6 @@
 type ProjectTag = [name: string, url: string];
 
-export type FeaturedTone = "cinema" | "health" | "food";
+export type FeaturedTone = "cinema" | "disk" | "health" | "food";
 
 export type FeaturedProject = {
   kicker: string;
@@ -48,7 +48,7 @@ export const featuredDuo: FeaturedDuo = {
   lightImage: "/nooli-hungi-light.png",
   darkImage: "/nooli-hungi-dark.png",
   imageAlt: "Écrans iPhone de Nooli et Hungi",
-  imagePosition: "left",
+  imagePosition: "right",
   tone: "food",
   apps: [
     {
@@ -70,7 +70,7 @@ export const featuredDuo: FeaturedDuo = {
     ["AI SDK", "https://ai-sdk.dev/"],
     ["GPT", "https://openai.com/api/"],
     ["Spoonacular", "https://spoonacular.com/food-api"],
-    ["TS Query", "https://tanstack.com/query"],
+    ["TanStack Query", "https://tanstack.com/query"],
     ["BetterAuth", "https://www.better-auth.com/"],
     ["Drizzle", "https://orm.drizzle.team/"],
     ["PostgreSQL", "https://www.postgresql.org/"],
@@ -86,7 +86,8 @@ export const projects: Project[] = [
     name: "MacGuffin",
     description:
       "App mobile pour découvrir les meilleurs films à voir au cinéma autour de soi, et réserver sa séance.",
-    appStore: "https://apps.apple.com/fr/app/macguffin/id6761733673",
+    appStore: "https://mcgff.in/appstore",
+    url: "https://mcgff.in/",
     featured: {
       kicker: "App iOS",
       lightImage: "/macguffin-light.png",
@@ -111,6 +112,34 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "PoppyDisk",
+    description:
+      "App desktop d'analyse de l'espace disque, avec carte radiale interactive, inspection des dossiers volumineux, et suppression sécurisée.",
+    url: "https://poppydisk.com/",
+    featured: {
+      kicker: "App Windows",
+      lightImage: "/poppydisk.png",
+      darkImage: "/poppydisk.png",
+      imageAlt: "Interface de PoppyDisk",
+      imagePosition: "right",
+      tone: "disk",
+      ctaLabel: "Visiter le site",
+    },
+    tags: [
+      ["Tauri", "https://v2.tauri.app/"],
+      ["Rust", "https://www.rust-lang.org/"],
+      ["Vite", "https://vite.dev/"],
+      ["TanStack Router", "https://tanstack.com/router"],
+      ["TanStack Query", "https://tanstack.com/query"],
+      ["Zustand", "https://zustand.docs.pmnd.rs/"],
+      ["Tailwind", "https://tailwindcss.com/"],
+      ["Shadcn", "https://ui.shadcn.com/"],
+      ["Polar", "https://polar.sh/"],
+      ["Sentry", "https://sentry.io/"],
+      ["PostHog", "https://posthog.com/"],
+    ],
+  },
+  {
     name: "Chef",
     description:
       "SaaS de gestion automatisée des repas hospitaliers, respectant les normes d'équilibre nutritionnel, et les contraintes patient et métier.",
@@ -120,7 +149,7 @@ export const projects: Project[] = [
       lightImage: "/chef-light.png",
       darkImage: "/chef-dark.png",
       imageAlt: "Interface de Chef affichée sur tablette",
-      imagePosition: "right",
+      imagePosition: "left",
       tone: "health",
       ctaLabel: "Visiter le site",
     },
@@ -129,7 +158,6 @@ export const projects: Project[] = [
       ["Tailwind", "https://tailwindcss.com/"],
       ["Shadcn", "https://ui.shadcn.com/"],
       ["Playwright", "https://playwright.dev/"],
-      ["Claude Code", "https://www.anthropic.com/claude-code"],
     ],
   },
   {
@@ -163,7 +191,6 @@ export const projects: Project[] = [
       ["BetterAuth", "https://www.better-auth.com/"],
       ["Drizzle", "https://orm.drizzle.team/"],
       ["PostgreSQL", "https://www.postgresql.org/"],
-      ["Claude Code", "https://www.anthropic.com/claude-code"],
     ],
   },
   {
@@ -175,9 +202,9 @@ export const projects: Project[] = [
       ["Vite", "https://vite.dev/"],
       ["Zustand", "https://zustand.docs.pmnd.rs/"],
       ["Zod", "https://zod.dev/"],
-      ["TS Router", "https://tanstack.com/router"],
-      ["TS Query", "https://tanstack.com/query"],
-      ["TS Virtual", "https://tanstack.com/virtual"],
+      ["TanStack Router", "https://tanstack.com/router"],
+      ["TanStack Query", "https://tanstack.com/query"],
+      ["TanStack Virtual", "https://tanstack.com/virtual"],
       ["Turborepo", "https://turborepo.com/"],
       ["Shadcn", "https://ui.shadcn.com/"],
       ["Vitest", "https://vitest.dev/"],
