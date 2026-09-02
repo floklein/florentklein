@@ -93,7 +93,7 @@ function SectionHeader({
   children,
 }: {
   title: string;
-  meta: string;
+  meta?: string;
   children?: React.ReactNode;
 }) {
   return (
@@ -101,9 +101,11 @@ function SectionHeader({
       <div className="px-5 pt-12 pb-6 sm:px-8 sm:pt-16">
         <div className="flex items-baseline justify-between gap-4">
           <h2 className="display font-medium text-2xl sm:text-3xl">{title}</h2>
-          <span className="meta shrink-0 text-[0.6875rem] text-muted-foreground uppercase tracking-wider">
-            {meta}
-          </span>
+          {meta && (
+            <span className="meta shrink-0 text-[0.6875rem] text-muted-foreground uppercase tracking-wider">
+              {meta}
+            </span>
+          )}
         </div>
         {children && (
           <p className="mt-2 max-w-xl text-muted-foreground text-sm leading-relaxed">
@@ -554,11 +556,6 @@ function ProjectCell({
 export default function Home() {
   const featuredProjects = projects.filter(hasFeaturedProject);
   const regularProjects = projects.filter((project) => !project.featured);
-  const projectCount =
-    projects.reduce(
-      (count, project) => count + (project.entries?.length ?? 1),
-      0,
-    ) + featuredDuo.apps.length;
 
   return (
     <main>
@@ -567,7 +564,7 @@ export default function Home() {
       <SectionHeader title="Expérience" meta="2019 — Aujourd'hui" />
       <Experience />
 
-      <SectionHeader title="Projets" meta={`${projectCount} projets`}>
+      <SectionHeader title="Projets">
         Une sélection de projets personnels réalisés avec React et TypeScript,
         et auto-déployés avec Coolify.
       </SectionHeader>
