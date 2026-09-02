@@ -12,3 +12,13 @@ This is **florentklein.dev**, Florent Klein's personal portfolio (French). Full 
 - **Accessibility:** target WCAG 2.1 AA in both light and dark themes; reduced-motion alternatives for all animation.
 
 When doing design work, prefer the `$impeccable` commands; they read PRODUCT.md and DESIGN.md before acting.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes: APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev`. Verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
