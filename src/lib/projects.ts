@@ -212,24 +212,13 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Great Minds & Artguessr",
+    name: "Great Minds",
     description:
-      "Deux jeux web : Great Minds teste votre complicité entre amis en temps réel, Artguessr votre intuition sur la date des œuvres d'art.",
-    entries: [
-      {
-        name: "Great Minds",
-        url: "https://greatminds.florentklein.dev/",
-        github: "https://github.com/floklein/greatminds",
-      },
-      {
-        name: "Artguessr",
-        url: "https://artguessr.florentklein.dev/",
-        github: "https://github.com/floklein/artguessr",
-      },
-    ],
+      "Jeu web qui teste votre complicité entre amis en temps réel.",
+    url: "https://greatminds.florentklein.dev/",
+    github: "https://github.com/floklein/greatminds",
     tags: [
       ["Vite", "https://vite.dev/"],
-      ["Next.js", "https://nextjs.org/"],
       ["Tailwind", "https://tailwindcss.com/"],
       [
         "WebSocket",
