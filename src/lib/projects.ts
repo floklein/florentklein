@@ -196,6 +196,7 @@ export const projects: Project[] = [
   {
     name: "Courrier",
     description: "Client mail minimaliste pour macOS et Windows.",
+    url: "https://florentklein.dev/courrier",
     github: "https://github.com/floklein/courrier",
     tags: [
       ["Electron", "https://www.electronjs.org/"],

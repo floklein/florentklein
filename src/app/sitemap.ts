@@ -8,5 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    { url: "https://florentklein.dev/courrier" },
+    { url: "https://florentklein.dev/courrier/privacy" },
   ];
 }
